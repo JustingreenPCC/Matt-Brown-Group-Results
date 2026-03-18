@@ -1,1104 +1,585 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WA Government Leadership Cohort · RAG Intelligence Report · Q1 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#0a0e1a;--ink2:#2d3748;--ink3:#64748b;--ink4:#94a3b8;
-  --white:#ffffff;--off:#f8fafc;--pale:#f1f5f9;--pale2:#e2e8f0;
-  --blue:#1e40af;--blue2:#2563eb;--blue3:#3b82f6;--blue4:#93c5fd;--blueGlow:rgba(37,99,235,.12);
-  --teal:#0d9488;--amber:#d97706;--rose:#e11d48;--green:#059669;
-  --r:rgba(225,29,72,.1);--rb:rgba(225,29,72,.25);
-  --a:rgba(217,119,6,.1);--ab:rgba(217,119,6,.25);
-  --g:rgba(5,150,105,.1);--gb:rgba(5,150,105,.25);
-  --b:rgba(37,99,235,.1);--bb:rgba(37,99,235,.25);
-  --shadow-sm:0 1px 3px rgba(0,0,0,.06);
-  --shadow:0 4px 20px rgba(0,0,0,.07),0 1px 4px rgba(0,0,0,.04);
-  --shadow-lg:0 20px 60px rgba(0,0,0,.1),0 4px 16px rgba(0,0,0,.06);
-  --shadow-blue:0 8px 40px rgba(37,99,235,.18);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--white);color:var(--ink);font-family:'Outfit',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--blue3);border-radius:2px}
 
-#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--blue2),var(--teal));z-index:9999;width:0%;transition:width .1s}
 
-nav{position:fixed;top:2px;left:0;right:0;z-index:1000;height:58px;display:flex;align-items:center;padding:0 32px;background:rgba(255,255,255,.92);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(0,0,0,.06);transition:box-shadow .3s}
-nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.08)}
-.nav-brand{display:flex;align-items:center;gap:12px;margin-right:28px;flex-shrink:0}
-.nav-logo{width:30px;height:30px;background:var(--blue2);border-radius:8px;display:flex;align-items:center;justify-content:center}
-.nav-logo svg{width:16px;height:16px;fill:none;stroke:white;stroke-width:2}
-.nav-name{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:600;color:var(--ink)}
-.nav-name span{color:var(--blue2)}
-.nav-items{display:flex;overflow:hidden;flex:1}
-.nav-item{font-size:10px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;padding:0 10px;height:58px;display:flex;align-items:center;color:var(--ink3);text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
-.nav-item:hover,.nav-item.active{color:var(--blue2);border-bottom-color:var(--blue2)}
-.nav-sep{flex:1}
-.nav-pill{background:rgba(13,148,136,.08);border:1px solid rgba(13,148,136,.25);color:var(--teal);font-family:'DM Mono',monospace;font-size:10px;padding:5px 14px;border-radius:20px;letter-spacing:.04em;white-space:nowrap;flex-shrink:0}
+RAG Intelligence
+OVERVIEW CEO BRIEFING FINANCIAL FINDINGS DASHBOARD RADAR DISTRIBUTION SUBDOMAINS PSYCH SAFETY ORG HEALTH RISK PIPELINE BENCHMARK INTERVENTIONS
 
-.hero{min-height:100vh;display:grid;grid-template-columns:1fr 460px;position:relative;overflow:hidden;padding-top:58px}
-.hero-bg{position:absolute;inset:0;background:var(--white)}
-.hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 600px at 25% 60%,rgba(219,234,254,.45),transparent),radial-gradient(ellipse 500px 400px at 85% 25%,rgba(209,250,229,.18),transparent)}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.022) 1px,transparent 1px);background-size:60px 60px;mask-image:linear-gradient(180deg,transparent,rgba(0,0,0,.25) 30%,rgba(0,0,0,.25) 70%,transparent)}
-.hero-left{padding:80px 56px 80px 64px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
-.hero-right{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;padding:80px 64px 80px 32px;gap:10px}
-.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:28px;opacity:0;animation:fadeUp .8s .2s forwards}
-.hero-eyebrow-line{width:28px;height:1px;background:var(--blue2)}
-.hero-eyebrow-text{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue2);font-weight:500}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,5.5vw,80px);line-height:.96;font-weight:600;margin-bottom:22px;opacity:0;animation:fadeUp .8s .35s forwards}
-.hero-title em{font-style:italic;color:var(--blue2)}
-.hero-sub{font-size:15px;color:var(--ink3);line-height:1.85;max-width:420px;margin-bottom:36px;font-weight:300;opacity:0;animation:fadeUp .8s .5s forwards}
-.hero-meta{display:flex;gap:24px;opacity:0;animation:fadeUp .8s .65s forwards;flex-wrap:wrap}
-.hero-meta-item{display:flex;flex-direction:column;gap:3px}
-.hero-meta-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink4)}
-.hero-meta-value{font-size:13px;font-weight:600;color:var(--ink)}
-.hero-cards{display:flex;flex-direction:column;gap:9px;opacity:0;animation:fadeUp .9s .4s forwards}
-.hero-card{background:var(--white);border:1px solid var(--pale2);border-radius:16px;padding:18px 22px;box-shadow:var(--shadow);position:relative;overflow:hidden;transition:all .3s}
-.hero-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px) translateX(-2px)}
-.hero-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:16px 0 0 16px}
-.hero-card.green::before{background:var(--green)}.hero-card.amber::before{background:var(--amber)}.hero-card.blue::before{background:var(--blue2)}.hero-card.teal::before{background:var(--teal)}.hero-card.red::before{background:var(--rose)}
-.hc-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink4);margin-bottom:5px}
-.hc-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
-.hc-val{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:700;line-height:1}
-.hero-card.green .hc-val{color:var(--green)}.hero-card.amber .hc-val{color:var(--amber)}.hero-card.blue .hc-val{color:var(--blue2)}.hero-card.teal .hc-val{color:var(--teal)}.hero-card.red .hc-val{color:var(--rose)}
-.hc-sub{font-size:11px;color:var(--ink3);text-align:right;line-height:1.4;max-width:130px}
+N=49 · Q1 2026 · WA Government
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 
-.section{max-width:1140px;margin:0 auto;padding:88px 48px;border-bottom:1px solid var(--pale)}
-.section:last-of-type{border-bottom:none}
-.sec-header{margin-bottom:52px}
-.sec-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blueGlow);border:1px solid var(--bb);color:var(--blue2);font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:16px;font-weight:500}
-.sec-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue2)}
-h2{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.8vw,52px);font-weight:600;line-height:1.1;color:var(--ink);margin-bottom:12px}
-h2 em{font-style:italic;color:var(--blue2)}
-.sec-lead{font-size:15px;color:var(--ink3);line-height:1.85;max-width:620px;font-weight:300}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
-.reveal.visible{opacity:1;transform:none}
-.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}
+MATT BROWN'S COACHING COHORT · WA GOVERNMENT · Q1 2026 · CONFIDENTIAL
+Leadership
+Intelligence
+Report
+A comprehensive assessment of adaptive capacity, psychological safety, and organisational health across the WA Government Leadership Cohort — translated into actionable intelligence for coaching, development, and executive decision-making.
+COACH
+Matt Brown
+ORGANISATION
+WA Government
+COHORT SIZE
+N = 49 leaders
+PERIOD
+Q1 2026 · Baseline
+OVERALL COHORT MEAN
+70.1/100
+Watch Zone
+5pts below threshold
+ANCHOR DOMAIN · CONSCIENCE
+80.2
+Sustained Strength
+Above threshold
+MULTI-DOMAIN EROSION RISK
+31%
+15 of 49 leaders
+2+ domains below 60
+PSYCHOLOGICAL SAFETY INDEX
+66/100
+Moderate
+Below 70 threshold
+CRITICAL ALERT · BOUNDARIES
+23.0
+Systemic Risk
+52pts below threshold
 
-.card{background:var(--white);border:1px solid var(--pale2);border-radius:20px;padding:28px;box-shadow:var(--shadow);transition:all .3s;position:relative;overflow:hidden}
-.card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
 
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.grid-5{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+01 · SNAPSHOT
+The Numbers That Matter Most
+Six headline metrics for this cohort. This group is performing meaningfully above the Watch Zone average — with one critical exception.
+70.1
+COHORT MEAN
+Watch Zone · Target 75+
+31%
+EROSION RISK
+15 leaders · 2+ domains
+79.7
+TOP DOMAIN
+Conscience · Strength
+25.0
+LOWEST SUBDOMAIN
+Boundaries · Critical
+66
+PSYCH SAFETY
+Below 70 threshold
+49
+COHORT SIZE
+Q1 2026 · Baseline
+DOMAIN PERFORMANCE · ALL METRICS
 
-.mono{font-family:'DM Mono',monospace}
-.label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink4);font-weight:500}
+≥75 Strength
 
-.tag{display:inline-flex;align-items:center;gap:5px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.04em;padding:4px 10px;border-radius:20px;font-weight:500}
-.tag::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0}
-.tag-r{background:var(--r);color:var(--rose);border:1px solid var(--rb)}.tag-r::before{background:var(--rose)}
-.tag-a{background:var(--a);color:var(--amber);border:1px solid var(--ab)}.tag-a::before{background:var(--amber)}
-.tag-g{background:var(--g);color:var(--green);border:1px solid var(--gb)}.tag-g::before{background:var(--green)}
-.tag-b{background:var(--b);color:var(--blue2);border:1px solid var(--bb)}.tag-b::before{background:var(--blue2)}
+60–74 Watch
 
-.insight{background:linear-gradient(135deg,#eff6ff,#f0fdf4);border:1px solid rgba(37,99,235,.15);border-left:3px solid var(--blue2);border-radius:0 16px 16px 0;padding:22px 26px}
-.insight-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue2);margin-bottom:10px;font-weight:500}
-.insight p{font-size:14px;line-height:1.85;color:var(--ink2)}
-.insight p strong{color:var(--ink)}
-.insight p+p{margin-top:10px}
+<60 Risk
+Conscience
+Ethical Clarity · Values
+79.7
+79.7 Strength
+Mindset
+Adaptive Thinking
+74.1
+74.1 Strength
+Reflection
+Learning Loops
+66.3
+66.3 Watch
+Wellbeing
+Renewal Capacity
+64.9
+64.9 Watch
+Connection
+Relational Health
+64.7
+64.7 Watch
+PSYCHOLOGICAL SAFETY — INDICATIVE SIGNAL
+Derived from: Feedback-Seeking (57.0) · Boundaries (25.0) · Structured Reflection (49.1) · Belonging · Emotional Wellbeing (59.2)
+~65
+Moderate · Inferred
 
-.counter-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-bottom:44px;border:1px solid var(--pale2);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
-.counter-cell{padding:26px 18px;text-align:center;border-right:1px solid var(--pale2);background:white;transition:background .3s;cursor:default}
-.counter-cell:last-child{border-right:none}
-.counter-cell:hover{background:var(--off)}
-.counter-val{font-family:'Cormorant Garamond',serif;font-size:50px;font-weight:700;line-height:1;display:block}
-.counter-cell.rc .counter-val{color:var(--rose)}.counter-cell.ac .counter-val{color:var(--amber)}.counter-cell.gc .counter-val{color:var(--green)}.counter-cell.bc .counter-val{color:var(--blue2)}.counter-cell.tc .counter-val{color:var(--teal)}.counter-cell.ic .counter-val{color:var(--ink)}
-.counter-lbl{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink4);margin-top:5px;display:block}
-.counter-sub{font-size:11px;color:var(--ink3);margin-top:3px;display:block;line-height:1.4}
+02 · EXECUTIVE BRIEFING
+Three Decisions Requiring Attention
+What this data requires from Matt and this cohort's sponsors in the next 90 days.
+1
+URGENT · STRUCTURAL
+Boundaries is a System Problem — Not a Personal One
+Boundaries scored 23.0 — the lowest subdomain in this dataset, 52 points below the adaptive threshold. This is the single most urgent signal in the report. At this level, no coaching intervention alone will fix it. The question is: what are the workload, always-on, and role-design conditions in WA Government making it structurally impossible for leaders to protect their recovery?
+2
+WARNING · COACHING PRIORITY
+Structured Reflection is the Learning Unlock
+Structured Reflection sits at 46.2 — the second-lowest subdomain. This cohort has strong real-time processing (Action Experimentation 77.0, Learning from Experience 77.0) but isn't slowing down enough to extract deep learning. For a coaching programme, this is the highest-leverage intervention available.
+3
+STRATEGIC · OPPORTUNITY
+Build on the Conscience Strength — It's Exceptional
+Conscience at 80.2 — with Ethical Sensitivity at 86.0, Pro-Social Contribution at 86.0, and Accountability at 83.0 — shows a cohort with a remarkably strong ethical and service foundation. This is the scaffolding from which psychological safety, structured reflection, and boundary-setting can all be rebuilt.
+WORKFORCE SUSTAINABILITY SCORE
 
-.abar-group{display:flex;flex-direction:column;gap:12px}
-.abar-row{display:grid;grid-template-columns:160px 1fr 72px;align-items:center;gap:14px}
-.abar-label{font-size:13px;font-weight:500;color:var(--ink);text-align:right}
-.abar-sub{font-size:10px;color:var(--ink4);display:block}
-.abar-track{background:var(--pale);border-radius:8px;height:34px;overflow:hidden}
-.abar-fill{height:100%;border-radius:8px;width:0%;transition:width 1.4s cubic-bezier(.16,1,.3,1);display:flex;align-items:center;justify-content:flex-end;padding-right:12px}
-.abar-fill span{color:white;font-family:'DM Mono',monospace;font-size:11px;font-weight:500;opacity:0;transition:opacity .3s .8s}
-.abar-fill.triggered span{opacity:1}
-.abar-score{font-family:'DM Mono',monospace;font-size:14px;font-weight:500}
+65
+5 POINTS BELOW THRESHOLD
+Adaptive Capacity
+72.5
+Conscience Anchor
+80.2 ↑
+Psychological Safety
+66
+Boundaries — Critical
+23.0 ↓
+PRIORITY SIGNAL
+4 Leaders at Highest Risk
+4 participants show erosion across 3+ domains simultaneously. This individual requires confidential priority attention in the coaching programme — independent of their performance rating.
 
-.radar-section{display:grid;grid-template-columns:400px 1fr;gap:36px;align-items:start}
-.radar-container{width:400px;height:400px;flex-shrink:0}
-.radar-container canvas{width:400px!important;height:400px!important;display:block}
+03 · FINANCIAL INTELLIGENCE
+The Cost of Inaction
+Even in a government context, adaptive capacity erosion carries real financial and operational consequences — in productivity, decision quality, and the cost of replacing experienced public sector leaders.
+💸
+Replacement Cost Risk
+1 leader in the highest erosion cluster. Replacing an experienced senior public servant costs 1.5–2× annual salary — plus 12–18 months of institutional knowledge loss and team disruption that cannot be easily priced.
+⚠ Est. replacement risk: $300K–$600K per departure
+📉
+Decision Quality Erosion
+Leaders with depleted Wellbeing (68.2) and Boundaries (23.0) are making high-stakes policy decisions while operating below their cognitive peak. In government, the downstream cost of poor decisions is borne by citizens and organisational credibility.
+⚠ Burned-out leaders: ~20% reduced decision capacity
+📈
+Coaching Programme ROI
+Matt's coaching cohort is a direct intervention. Organisations investing in structured leadership development report a $2 return per $1 invested — through retained talent, improved decision quality, and reduced sick leave and disengagement.
+✓ Est. coaching ROI: 200–300% within 12 months
 
-.ohi-bar{height:6px;background:var(--pale2);border-radius:3px;margin-top:7px;overflow:hidden}
-.ohi-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--blue),var(--blue3));width:0%;transition:width 1.4s cubic-bezier(.16,1,.3,1)}
+04 · CRITICAL FINDINGS
+What the Data Is Telling You
+Three highest-priority patterns — each with a specific implication for the coaching programme and the sponsoring organisation.
+01
+Critical · Systemic
+Boundaries at Systemic Risk
+23.0
+52 points below the adaptive threshold. Shared across a 25-person cohort, this is a structural signal about WA Government working conditions — not individual behaviour. Every other metric in this report is affected downstream by this single score.
+⚑ PSI of 66 means leaders may not feel safe to even name this
+02
+Warning · Coaching Gap
+The Structured Reflection Gap
+46.2
+Structured Reflection at 46.2 despite strong Action Experimentation (77.0) and Learning from Experience (77.0) reveals a cohort that acts well but doesn't pause to consolidate. This is the most coachable gap in the dataset — and one of the highest-leverage development areas.
+⚑ Closing this gap could lift Overall Mean above 75 within 6 months
+03
+Strength · Differentiated
+Exceptional Ethical Foundation
+80.2
+Conscience at 80.2 — with Ethical Sensitivity (86.0), Pro-Social Contribution (86.0), Accountability (83.0), and Physical Activity (82.0) all at strength levels. This is a cohort that genuinely cares about doing right by the public. That foundation is rare and valuable.
+✓ Use Conscience as the coaching anchor — it's already there
 
-.risk-tbl{width:100%;border-collapse:collapse;border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}
-.risk-tbl th{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink4);padding:13px 18px;text-align:left;background:var(--pale);border-bottom:1px solid var(--pale2)}
-.risk-tbl td{padding:15px 18px;border-bottom:1px solid var(--pale);font-size:13px;color:var(--ink2);background:white;transition:background .2s}
-.risk-tbl tr:hover td{background:var(--off)}
-.risk-tbl tr:last-child td{border-bottom:none}
+05 · EXECUTIVE DASHBOARD
+Cohort Snapshot
+The full picture in one view. Two domains in strength territory, three in the Watch Zone — a meaningfully stronger profile than the sector average.
+COHORT MEAN
+70.1
+Watch Zone · 5pts below 75
+SCORE RANGE
+26pt
+Low 57 · High 83
+DOMAINS AT STRENGTH
+1
+Conscience 79.7 · Above threshold
+EROSION RISK
+31%
+15 of 49 leaders
+FULL DOMAIN HEATMAP
 
-.interv{border-radius:20px;padding:32px;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
-.interv-i{background:linear-gradient(135deg,#ecfdf5,#f0fdf4);border:1px solid rgba(5,150,105,.2)}
-.interv-t{background:linear-gradient(135deg,#eff6ff,#e0f2fe);border:1px solid rgba(37,99,235,.2)}
-.interv-s{background:linear-gradient(135deg,#faf5ff,#ede9fe);border:1px solid rgba(139,92,246,.2)}
-.interv-accent{position:absolute;top:-40px;right:-40px;width:110px;height:110px;border-radius:50%;opacity:.25}
-.interv-i .interv-accent{background:var(--green)}.interv-t .interv-accent{background:var(--blue2)}.interv-s .interv-accent{background:#7c3aed}
-.interv-level{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:12px}
-.interv-i .interv-level{color:var(--green)}.interv-t .interv-level{color:var(--blue2)}.interv-s .interv-level{color:#7c3aed}
-.interv-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;line-height:1.1;color:var(--ink);margin-bottom:10px}
-.interv-body{font-size:13px;color:var(--ink2);line-height:1.8;margin-bottom:18px}
-.interv-actions{display:flex;flex-direction:column;gap:7px;padding-top:14px;border-top:1px solid rgba(0,0,0,.08)}
-.ia{display:flex;gap:10px;font-size:13px;color:var(--ink2)}
-.ia-arrow{color:var(--blue2);font-weight:700;flex-shrink:0}
+≥75 Strength
 
-.psy-quad{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;border-radius:20px;overflow:hidden;height:320px;box-shadow:var(--shadow)}
-.pq{display:flex;flex-direction:column;justify-content:flex-end;padding:22px;position:relative;transition:all .3s}
-.pq:hover{filter:brightness(.97)}
-.pq-1{background:linear-gradient(135deg,#ecfdf5,#d1fae5)}.pq-2{background:linear-gradient(135deg,#fefce8,#fde68a)}.pq-3{background:linear-gradient(135deg,#eff6ff,#dbeafe)}.pq-4{background:linear-gradient(135deg,#fff1f2,#ffe4e6)}
-.pq-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;line-height:1;margin-bottom:4px}
-.pq-1 .pq-num{color:var(--green)}.pq-2 .pq-num{color:var(--amber)}.pq-3 .pq-num{color:var(--blue2)}.pq-4 .pq-num{color:var(--rose)}
-.pq-label{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:2px}
-.pq-sub{font-size:11px;color:var(--ink3);line-height:1.4}
-.pq-badge{position:absolute;top:14px;right:14px}
+60–74 Watch
+Conscience
+Ethical Clarity
+79.7
+79.7
+Mindset
+Adaptive Thinking
+74.1
+74.1
+Reflection
+Learning Loops
+66.3
+66.3
+Wellbeing
+Renewal Capacity
+64.9
+64.9
+Connection
+Relational Health
+64.7
+64.7
+PSYCHOLOGICAL SAFETY — INDICATIVE
+Inferred from Feedback-Seeking · Boundaries · Structured Reflection · Belonging
+~65 est.
+INTERPRETIVE SUMMARY
+This cohort presents a meaningfully stronger adaptive profile than typical sector averages — two domains in genuine strength territory, and a mean of 72.5 that is approaching the 75-point threshold. The story here is not one of crisis; it is one of a high-performing group operating at the edge of their reserves. The Boundaries score of 23.0 is the single anomaly that could destabilise everything else if left unaddressed at the system level.
 
-.timeline{position:relative;padding-left:36px}
-.timeline::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--blue2),var(--teal))}
-.tl-item{position:relative;margin-bottom:28px}
-.tl-item::before{content:'';position:absolute;left:-30px;top:4px;width:11px;height:11px;border-radius:50%;background:white;border:2px solid var(--rose);box-shadow:0 0 0 3px rgba(225,29,72,.1)}
-.tl-label{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink4);margin-bottom:3px}
-.tl-title{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:5px}
-.tl-body{font-size:13px;color:var(--ink3);line-height:1.7}
+06 · DOMAIN RADAR
+Adaptive Capacity Profile
+Five-domain mapping against the 75-point threshold. Two genuine strengths, three in the Watch Zone — a 14.1-point gap between peak and floor.
 
-.q-list{display:flex;flex-direction:column;gap:10px}
-.q-item{display:grid;grid-template-columns:52px 1fr;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:all .3s;background:white;border:1px solid var(--pale2)}
-.q-item:hover{box-shadow:var(--shadow-lg);border-color:rgba(37,99,235,.2);transform:translateX(4px)}
-.q-num{background:linear-gradient(135deg,var(--blue),var(--blue2));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:700;color:white}
-.q-text{padding:18px 22px;font-size:14px;line-height:1.7;font-style:italic;color:var(--ink2)}
+Conscience
+Ethical Clarity · Values · Accountability
+79.7
+Strength
+Mindset
+Growth · Optimism · Self-Efficacy
+74.1
+Watch Zone
+Reflection
+Learning · Feedback · Metacognition
+66.3
+Watch Zone
+Wellbeing
+Sleep · Mindfulness · Physical Activity
+64.9
+Watch Zone
+Connection
+Belonging · Boundaries · Relational Health
+64.7
+Watch Zone
+THE 14.1-POINT GAP
+A 14.1-point gap between Conscience (peak) and Connection (floor) tells a specific story: this cohort leads with values and thinking strength, but relational and recovery infrastructure is under strain. The Boundaries subdomain (23.0) is dragging Connection down significantly — without it, Connection would likely sit in the Watch Zone upper band.
 
-.stagger>*{opacity:0;transform:translateY(18px)}
-.stagger.visible>*{opacity:1;transform:none;transition:opacity .6s,transform .6s}
-.stagger.visible>*:nth-child(1){transition-delay:.05s}.stagger.visible>*:nth-child(2){transition-delay:.12s}.stagger.visible>*:nth-child(3){transition-delay:.19s}.stagger.visible>*:nth-child(4){transition-delay:.26s}.stagger.visible>*:nth-child(5){transition-delay:.33s}.stagger.visible>*:nth-child(6){transition-delay:.4s}
+07 · DISTRIBUTION PATTERNS
+How the Cohort Actually Clusters
+The domain averages conceal meaningful spread. Mindset and Conscience show almost no low scorers — Connection and Wellbeing show a long tail of risk.
 
-.particle{position:absolute;pointer-events:none;border-radius:50%;animation:float linear infinite}
-@keyframes float{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-110px) rotate(360deg);opacity:0}}
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--pale2),transparent)}
-#waveCanvas{display:block;width:100%;height:72px}
+≥75 · High Adaptive
 
-footer{background:var(--ink);color:rgba(255,255,255,.4);padding:28px 56px;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.07em}
-footer strong{color:rgba(255,255,255,.8)}
-</style>
-</head>
-<body>
+60–74 · Moderate
 
-<div id="progress"></div>
+45–59 · Low
 
-<nav id="mainNav">
-  <div class="nav-brand">
-    <div class="nav-logo"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-    <div class="nav-name">RAG <span>Intelligence</span></div>
-  </div>
-  <div class="nav-items">
-    <a href="#overview" class="nav-item">Overview</a>
-    <a href="#brief" class="nav-item">CEO Briefing</a>
-    <a href="#financial" class="nav-item">Financial</a>
-    <a href="#findings" class="nav-item">Findings</a>
-    <a href="#dashboard" class="nav-item">Dashboard</a>
-    <a href="#radar" class="nav-item">Radar</a>
-    <a href="#distribution" class="nav-item">Distribution</a>
-    <a href="#subdomains" class="nav-item">Subdomains</a>
-    <a href="#psysafety" class="nav-item">Psych Safety</a>
-    <a href="#orghealth" class="nav-item">Org Health</a>
-    <a href="#risk" class="nav-item">Risk</a>
-    <a href="#pipeline" class="nav-item">Pipeline</a>
-    <a href="#benchmark" class="nav-item">Benchmark</a>
-    <a href="#action" class="nav-item">Interventions</a>
-  </div>
-  <div class="nav-sep"></div>
-  <div class="nav-pill">N=25 · Q1 2026 · WA Government</div>
-</nav>
+<45 · Critical
+Mindset
+68% 32%
+Conscience
+64% 36%
+Reflection
+36% 44% 20%
+Wellbeing
+32% 44% 16% 8%
+Connection
+32% 36% 24% 8%
+MULTI-DOMAIN EROSION INDEX
+31%
+Below 60 in 2 or more domains simultaneously
+15 of 49 leaders — lower than sector average, but not low enough to ignore
+RISK CLUSTER DISTRIBUTION
+0–1 domain at risk
+69% · 34 leaders
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg"><div class="hero-grid"></div></div>
-  <div id="particles" style="position:absolute;inset:0;pointer-events:none;z-index:1"></div>
-  <div class="hero-left">
-    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><div class="hero-eyebrow-text">Matt Brown's Coaching Cohort · WA Government · Q1 2026 · Confidential</div></div>
-    <h1 class="hero-title">
-      <span style="display:block">Leadership</span>
-      <span style="display:block"><em>Intelligence</em></span>
-      <span style="display:block;font-size:.68em;font-weight:300;font-style:italic;color:var(--ink3)">Report</span>
-    </h1>
-    <p class="hero-sub">A comprehensive assessment of adaptive capacity, psychological safety, and organisational health across the WA Government Leadership Cohort — translated into actionable intelligence for coaching, development, and executive decision-making.</p>
-    <div class="hero-meta">
-      <div class="hero-meta-item"><span class="hero-meta-label">Coach</span><span class="hero-meta-value">Matt Brown</span></div>
-      <div class="hero-meta-item"><span class="hero-meta-label">Organisation</span><span class="hero-meta-value">WA Government</span></div>
-      <div class="hero-meta-item"><span class="hero-meta-label">Cohort Size</span><span class="hero-meta-value">N = 25 leaders</span></div>
-      <div class="hero-meta-item"><span class="hero-meta-label">Period</span><span class="hero-meta-value">Q1 2026 · Baseline</span></div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-cards">
-      <div class="hero-card green">
-        <div class="hc-label">Overall Cohort Mean</div>
-        <div class="hc-row"><div class="hc-val">72.5<span style="font-size:18px;font-weight:300">/100</span></div><div class="hc-sub">Watch Zone<br>3pts below threshold</div></div>
-      </div>
-      <div class="hero-card green">
-        <div class="hc-label">Anchor Domain · Conscience</div>
-        <div class="hc-row"><div class="hc-val">80.2</div><div class="hc-sub">Sustained Strength<br>Above threshold</div></div>
-      </div>
-      <div class="hero-card amber">
-        <div class="hc-label">Multi-Domain Erosion Risk</div>
-        <div class="hc-row"><div class="hc-val">24<span style="font-size:18px;font-weight:300">%</span></div><div class="hc-sub">6 of 25 leaders<br>2+ domains below 60</div></div>
-      </div>
-      <div class="hero-card blue">
-        <div class="hc-label">Psychological Safety Index</div>
-        <div class="hc-row"><div class="hc-val">66<span style="font-size:18px;font-weight:300">/100</span></div><div class="hc-sub">Moderate<br>Below 70 threshold</div></div>
-      </div>
-      <div class="hero-card red">
-        <div class="hc-label">Critical Alert · Boundaries</div>
-        <div class="hc-row"><div class="hc-val">23.0</div><div class="hc-sub">Systemic Risk<br>52pts below threshold</div></div>
-      </div>
-    </div>
-  </div>
-</section>
+Stable or Watch Zone — programme engagement as planned
+2 domains at risk
+22% · 11 leaders
 
-<canvas id="waveCanvas"></canvas>
+Emerging erosion — heightened coaching attention
+3+ domains at risk
+8% · 4 leaders
 
-<!-- S1: SNAPSHOT -->
-<div id="overview"></div>
-<section class="section" style="padding-top:68px">
-  <div class="sec-header reveal">
-    <div class="sec-tag">01 · Snapshot</div>
-    <h2>The Numbers That<br><em>Matter Most</em></h2>
-    <p class="sec-lead">Six headline metrics for this cohort. This group is performing meaningfully above the Watch Zone average — with one critical exception.</p>
-  </div>
-  <div class="counter-grid stagger reveal">
-    <div class="counter-cell gc"><span class="counter-val" data-target="72.5" data-suffix="">72.5</span><span class="counter-lbl">Cohort Mean</span><span class="counter-sub">Watch Zone · Target 75+</span></div>
-    <div class="counter-cell ac"><span class="counter-val" data-target="24" data-suffix="%">24%</span><span class="counter-lbl">Erosion Risk</span><span class="counter-sub">6 leaders · 2+ domains</span></div>
-    <div class="counter-cell gc"><span class="counter-val" data-target="80.2" data-suffix="">80.2</span><span class="counter-lbl">Top Domain</span><span class="counter-sub">Conscience · Strength</span></div>
-    <div class="counter-cell rc"><span class="counter-val" data-target="23" data-suffix="">23.0</span><span class="counter-lbl">Lowest Subdomain</span><span class="counter-sub">Boundaries · Critical</span></div>
-    <div class="counter-cell bc"><span class="counter-val" data-target="66" data-suffix="">66</span><span class="counter-lbl">Psych Safety</span><span class="counter-sub">Below 70 threshold</span></div>
-    <div class="counter-cell ic"><span class="counter-val" data-target="25" data-suffix="">25</span><span class="counter-lbl">Cohort Size</span><span class="counter-sub">Q1 2026 · Baseline</span></div>
-  </div>
-  <div class="reveal">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px">
-      <div class="label">Domain Performance · All Metrics</div>
-      <div style="display:flex;gap:14px">
-        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink4);font-family:'DM Mono',monospace"><span style="width:8px;height:8px;background:var(--green);border-radius:2px;display:inline-block"></span>≥75 Strength</span>
-        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink4);font-family:'DM Mono',monospace"><span style="width:8px;height:8px;background:var(--amber);border-radius:2px;display:inline-block"></span>60–74 Watch</span>
-        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink4);font-family:'DM Mono',monospace"><span style="width:8px;height:8px;background:var(--rose);border-radius:2px;display:inline-block"></span>&lt;60 Risk</span>
-      </div>
-    </div>
-    <div class="abar-group" id="domainBars">
-      <div class="abar-row"><div class="abar-label">Conscience<span class="abar-sub">Ethical Clarity · Values</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#047857,var(--green))" data-width="80.2"><span>80.2</span></div></div><div class="abar-score" style="color:var(--green)">80.2 <span class="tag tag-g" style="font-size:9px">Strength</span></div></div>
-      <div class="abar-row"><div class="abar-label">Mindset<span class="abar-sub">Adaptive Thinking</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#047857,var(--green))" data-width="77.0"><span>77.0</span></div></div><div class="abar-score" style="color:var(--green)">77.0 <span class="tag tag-g" style="font-size:9px">Strength</span></div></div>
-      <div class="abar-row"><div class="abar-label">Reflection<span class="abar-sub">Learning Loops</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#92400e,#eab308)" data-width="69.2"><span>69.2</span></div></div><div class="abar-score" style="color:#ca8a04">69.2 <span class="tag tag-a" style="font-size:9px">Watch</span></div></div>
-      <div class="abar-row"><div class="abar-label">Wellbeing<span class="abar-sub">Renewal Capacity</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#92400e,#eab308)" data-width="68.2"><span>68.2</span></div></div><div class="abar-score" style="color:var(--amber)">68.2 <span class="tag tag-a" style="font-size:9px">Watch</span></div></div>
-      <div class="abar-row"><div class="abar-label">Connection<span class="abar-sub">Relational Health</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#b45309,#f59e0b)" data-width="66.1"><span>66.1</span></div></div><div class="abar-score" style="color:var(--amber)">66.1 <span class="tag tag-a" style="font-size:9px">Watch</span></div></div>
-      <div class="abar-row"><div class="abar-label">Psych Safety<span class="abar-sub">PSI Composite</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,var(--blue),var(--blue3))" data-width="66"><span>66</span></div></div><div class="abar-score" style="color:var(--blue2)">66 <span class="tag tag-b" style="font-size:9px">Watch</span></div></div>
-    </div>
-  </div>
-</section>
+Priority individual support required
 
-<!-- S2: CEO BRIEFING -->
-<div class="divider"></div>
-<section class="section" id="brief">
-  <div class="sec-header reveal">
-    <div class="sec-tag">02 · Executive Briefing</div>
-    <h2>Three Decisions<br><em>Requiring Attention</em></h2>
-    <p class="sec-lead">What this data requires from Matt and this cohort's sponsors in the next 90 days.</p>
-  </div>
-  <div class="grid-2 reveal" style="gap:22px;margin-bottom:28px">
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <div class="card" style="border-top:3px solid var(--rose)">
-        <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px">
-          <div style="background:var(--r);border:1px solid var(--rb);width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--rose);flex-shrink:0">1</div>
-          <div>
-            <div class="label" style="color:var(--rose);margin-bottom:3px">Urgent · Structural</div>
-            <div style="font-size:15px;font-weight:600;color:var(--ink);line-height:1.3">Boundaries is a System Problem — Not a Personal One</div>
-          </div>
-        </div>
-        <p style="font-size:13px;color:var(--ink3);line-height:1.8">Boundaries scored 23.0 — the lowest subdomain in this dataset, 52 points below the adaptive threshold. This is the single most urgent signal in the report. At this level, no coaching intervention alone will fix it. The question is: what are the workload, always-on, and role-design conditions in WA Government making it structurally impossible for leaders to protect their recovery?</p>
-      </div>
-      <div class="card" style="border-top:3px solid var(--amber)">
-        <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px">
-          <div style="background:var(--a);border:1px solid var(--ab);width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--amber);flex-shrink:0">2</div>
-          <div>
-            <div class="label" style="color:var(--amber);margin-bottom:3px">Warning · Coaching Priority</div>
-            <div style="font-size:15px;font-weight:600;color:var(--ink);line-height:1.3">Structured Reflection is the Learning Unlock</div>
-          </div>
-        </div>
-        <p style="font-size:13px;color:var(--ink3);line-height:1.8">Structured Reflection sits at 46.2 — the second-lowest subdomain. This cohort has strong real-time processing (Action Experimentation 77.0, Learning from Experience 77.0) but isn't slowing down enough to extract deep learning. For a coaching programme, this is the highest-leverage intervention available.</p>
-      </div>
-      <div class="card" style="border-top:3px solid var(--blue2)">
-        <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:12px">
-          <div style="background:var(--b);border:1px solid var(--bb);width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:700;color:var(--blue2);flex-shrink:0">3</div>
-          <div>
-            <div class="label" style="color:var(--blue2);margin-bottom:3px">Strategic · Opportunity</div>
-            <div style="font-size:15px;font-weight:600;color:var(--ink);line-height:1.3">Build on the Conscience Strength — It's Exceptional</div>
-          </div>
-        </div>
-        <p style="font-size:13px;color:var(--ink3);line-height:1.8">Conscience at 80.2 — with Ethical Sensitivity at 86.0, Pro-Social Contribution at 86.0, and Accountability at 83.0 — shows a cohort with a remarkably strong ethical and service foundation. This is the scaffolding from which psychological safety, structured reflection, and boundary-setting can all be rebuilt.</p>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div class="card" style="background:linear-gradient(135deg,var(--blue),var(--blue2));border:none;flex:1">
-        <div class="label" style="color:rgba(255,255,255,.6);margin-bottom:16px">Workforce Sustainability Score</div>
-        <canvas id="gaugeCanvas" width="200" height="110" style="display:block;margin:0 auto"></canvas>
-        <div style="text-align:center;margin-top:-6px">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:700;color:white;line-height:1">65</div>
-          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.15em;color:rgba(255,255,255,.6);margin-top:2px">5 POINTS BELOW THRESHOLD</div>
-        </div>
-        <div style="margin-top:20px;border-top:1px solid rgba(255,255,255,.15);padding-top:18px;display:flex;flex-direction:column;gap:8px">
-          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:rgba(255,255,255,.7)">Adaptive Capacity</span><span style="font-family:'DM Mono',monospace;color:rgba(255,255,255,.9)">72.5</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:rgba(255,255,255,.7)">Conscience Anchor</span><span style="font-family:'DM Mono',monospace;color:#6ee7b7">80.2 ↑</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:rgba(255,255,255,.7)">Psychological Safety</span><span style="font-family:'DM Mono',monospace;color:rgba(255,255,255,.9)">66</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:12px"><span style="color:rgba(255,255,255,.7)">Boundaries — Critical</span><span style="font-family:'DM Mono',monospace;color:#f87171">23.0 ↓</span></div>
-        </div>
-      </div>
-      <div class="card" style="background:linear-gradient(135deg,#fff1f2,white);border-color:rgba(225,29,72,.15)">
-        <div class="label" style="color:var(--rose);margin-bottom:7px">Priority Signal</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--ink);margin-bottom:7px">1 Leader at Highest Risk</div>
-        <p style="font-size:13px;color:var(--ink3);line-height:1.7">1 participant shows erosion across 3+ domains simultaneously. This individual requires confidential priority attention in the coaching programme — independent of their performance rating.</p>
-      </div>
-    </div>
-  </div>
-</section>
+08 · SUBDOMAIN PRECISION
+Strengths & Erosion Indicators
+The 31 subdomains reveal the precise levers available for targeted coaching intervention.
+▲ TOP 5 STRENGTH ANCHORS
+Ethical Sensitivity
+Conscience
+83.4
+83.4
+Pro-Social Contribution
+Connection
+86.0
+86.0
+Accountability
+Conscience
+77.0
+77.0
+Physical Activity
+Wellbeing
+80.0
+80.0
+Optimism
+Mindset
+76.1
+76.1
+STRENGTH PATTERN
+Strengths cluster around ethical service, accountability, and physical wellbeing — a profile consistent with public sector leaders who are deeply committed to their role and their own physical health, but may be sacrificing psychological recovery and relational boundaries to sustain that commitment.
+▼ BOTTOM 5 EROSION INDICATORS
+Boundaries
+Connection
+25.0
+25.0
+Structured Reflection
+Reflection
+49.1
+49.1
+Mindfulness
+Wellbeing
+54.8
+54.8
+Emotional Wellbeing
+Wellbeing
+59.2
+59.2
+Feedback-Seeking
+Reflection
+57.0
+57.0
+EROSION PATTERN
+Boundaries (23.0) is the defining signal. The co-occurrence of Mindfulness (56.0) and Emotional Wellbeing (61.3) suggests leaders are physically active but psychologically depleted — exercising their bodies but not their capacity to rest, reflect, or emotionally regulate. Structured Reflection (46.2) and Feedback-Seeking (60.2) confirm that recovery and learning loops are both compromised.
 
-<!-- S3: FINANCIAL -->
-<div class="divider"></div>
-<section class="section" id="financial">
-  <div class="sec-header reveal">
-    <div class="sec-tag">03 · Financial Intelligence</div>
-    <h2>The Cost of<br><em>Inaction</em></h2>
-    <p class="sec-lead">Even in a government context, adaptive capacity erosion carries real financial and operational consequences — in productivity, decision quality, and the cost of replacing experienced public sector leaders.</p>
-  </div>
-  <div class="grid-3 stagger reveal" style="margin-bottom:32px">
-    <div class="card" style="border-top:3px solid var(--rose)">
-      <div style="font-size:30px;margin-bottom:10px">💸</div>
-      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px">Replacement Cost Risk</div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:14px">1 leader in the highest erosion cluster. Replacing an experienced senior public servant costs 1.5–2× annual salary — plus 12–18 months of institutional knowledge loss and team disruption that cannot be easily priced.</p>
-      <div style="background:var(--r);border:1px solid var(--rb);border-radius:10px;padding:10px 14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--rose)">⚠ Est. replacement risk: $300K–$600K per departure</div>
-    </div>
-    <div class="card" style="border-top:3px solid var(--amber)">
-      <div style="font-size:30px;margin-bottom:10px">📉</div>
-      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px">Decision Quality Erosion</div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:14px">Leaders with depleted Wellbeing (68.2) and Boundaries (23.0) are making high-stakes policy decisions while operating below their cognitive peak. In government, the downstream cost of poor decisions is borne by citizens and organisational credibility.</p>
-      <div style="background:var(--a);border:1px solid var(--ab);border-radius:10px;padding:10px 14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--amber)">⚠ Burned-out leaders: ~20% reduced decision capacity</div>
-    </div>
-    <div class="card" style="border-top:3px solid var(--green)">
-      <div style="font-size:30px;margin-bottom:10px">📈</div>
-      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:8px">Coaching Programme ROI</div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:14px">Matt's coaching cohort is a direct intervention. Organisations investing in structured leadership development report a $2 return per $1 invested — through retained talent, improved decision quality, and reduced sick leave and disengagement.</p>
-      <div style="background:var(--g);border:1px solid var(--gb);border-radius:10px;padding:10px 14px;font-family:'DM Mono',monospace;font-size:11px;color:var(--green)">✓ Est. coaching ROI: 200–300% within 12 months</div>
-    </div>
-  </div>
-</section>
+09 · PSYCHOLOGICAL SAFETY
+The Hidden Infrastructure
+A PSI of 66 sits just below the 70-point threshold. In a government context where hierarchy is pronounced and career consequences are real, this score deserves particular attention.
+Moderate
+68
+Risk Tolerance
+Willingness to take interpersonal risks, admit uncertainty
+Moderate
+70
+Inclusion Safety
+Sense of belonging and acceptance within the group
+Watch
+64
+Voice Safety
+Comfort speaking up, raising concerns, challenging decisions
+Risk
+60
+Learner Safety
+Safety to ask questions, make mistakes, and learn openly
+PSI OVERALL · 66/100
 
-<!-- S4: FINDINGS -->
-<div class="divider"></div>
-<section class="section" id="findings">
-  <div class="sec-header reveal">
-    <div class="sec-tag">04 · Critical Findings</div>
-    <h2>What the Data<br><em>Is Telling You</em></h2>
-    <p class="sec-lead">Three highest-priority patterns — each with a specific implication for the coaching programme and the sponsoring organisation.</p>
-  </div>
-  <div class="grid-3 stagger reveal" style="margin-bottom:28px">
-    <div class="card" style="border-top:3px solid var(--rose);position:relative;overflow:hidden">
-      <div style="position:absolute;top:16px;right:16px;font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;color:var(--pale);line-height:1;pointer-events:none">01</div>
-      <div class="tag tag-r" style="margin-bottom:12px">Critical · Systemic</div>
-      <div style="font-size:16px;font-weight:600;color:var(--ink);margin-bottom:7px;line-height:1.3">Boundaries at Systemic Risk</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--rose);line-height:1;margin-bottom:9px">23.0</div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:12px">52 points below the adaptive threshold. Shared across a 25-person cohort, this is a structural signal about WA Government working conditions — not individual behaviour. Every other metric in this report is affected downstream by this single score.</p>
-      <div style="background:var(--r);border:1px solid var(--rb);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--rose)">⚑ PSI of 66 means leaders may not feel safe to even name this</div>
-    </div>
-    <div class="card" style="border-top:3px solid var(--amber);position:relative;overflow:hidden">
-      <div style="position:absolute;top:16px;right:16px;font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;color:var(--pale);line-height:1;pointer-events:none">02</div>
-      <div class="tag tag-a" style="margin-bottom:12px">Warning · Coaching Gap</div>
-      <div style="font-size:16px;font-weight:600;color:var(--ink);margin-bottom:7px;line-height:1.3">The Structured Reflection Gap</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--amber);line-height:1;margin-bottom:9px">46.2</div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:12px">Structured Reflection at 46.2 despite strong Action Experimentation (77.0) and Learning from Experience (77.0) reveals a cohort that acts well but doesn't pause to consolidate. This is the most coachable gap in the dataset — and one of the highest-leverage development areas.</p>
-      <div style="background:var(--a);border:1px solid var(--ab);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--amber)">⚑ Closing this gap could lift Overall Mean above 75 within 6 months</div>
-    </div>
-    <div class="card" style="border-top:3px solid var(--green);position:relative;overflow:hidden">
-      <div style="position:absolute;top:16px;right:16px;font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;color:var(--pale);line-height:1;pointer-events:none">03</div>
-      <div class="tag tag-g" style="margin-bottom:12px">Strength · Differentiated</div>
-      <div style="font-size:16px;font-weight:600;color:var(--ink);margin-bottom:7px;line-height:1.3">Exceptional Ethical Foundation</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--green);line-height:1;margin-bottom:9px">80.2</div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:12px">Conscience at 80.2 — with Ethical Sensitivity (86.0), Pro-Social Contribution (86.0), Accountability (83.0), and Physical Activity (82.0) all at strength levels. This is a cohort that genuinely cares about doing right by the public. That foundation is rare and valuable.</p>
-      <div style="background:var(--g);border:1px solid var(--gb);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--green)">✓ Use Conscience as the coaching anchor — it's already there</div>
-    </div>
-  </div>
-</section>
+Industry threshold
+70+
+This cohort PSI
+66
+Gap to threshold
+−4pts
+GOVERNMENT CONTEXT MATTERS
+In hierarchical government environments, a PSI of 66 may understate the real degree of self-censoring. Leaders may score their technical safety (Inclusion: 70) higher than their operational safety (Voice: 64, Learner: 60). The Learner Safety score is particularly significant in a coaching context — leaders who don't feel safe to be wrong in sessions will not fully engage.
+⚠️
+What a PSI of 66 May Be Costing This Cohort
+SIGNAL
+Boundaries can't be named
+When Learner Safety is 60 and Boundaries is 23.0, leaders may be experiencing boundary violation without feeling safe to name it — to their manager, their peers, or their coach.
+SIGNAL
+Coaching programme effectiveness at risk
+A PSI of 66 with Learner Safety at 60 means some participants may not be bringing their full reality into coaching sessions. Psychological safety in the room is a prerequisite for coaching outcomes.
+SIGNAL
+Feedback loops stay closed
+Feedback-Seeking at 60.2 combined with low Voice Safety confirms: this group would benefit from honest feedback but may not yet have the conditions to receive or give it safely.
+🔗
+PSI as Coaching Infrastructure
+Psychological safety is not a soft metric — it is the operating condition for everything else in this programme:
+Structured Reflection stays low without it
+46.2
+Feedback-Seeking stays suppressed
+60.2
+Boundaries can't be defended
+23.0
+Emotional Wellbeing stays depleted
+61.3
+The Conscience strength (80.2) provides the ethical foundation from which psychological safety can be deliberately built — people who care about integrity are already predisposed to honest dialogue when the conditions permit it.
 
-<!-- S5: DASHBOARD -->
-<div class="divider"></div>
-<section class="section" id="dashboard">
-  <div class="sec-header reveal">
-    <div class="sec-tag">05 · Executive Dashboard</div>
-    <h2>Cohort<br><em>Snapshot</em></h2>
-    <p class="sec-lead">The full picture in one view. Two domains in strength territory, three in the Watch Zone — a meaningfully stronger profile than the sector average.</p>
-  </div>
-  <div class="grid-4 stagger reveal" style="margin-bottom:28px">
-    <div class="card" style="text-align:center"><div class="label" style="margin-bottom:7px">Cohort Mean</div><div style="font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:700;color:var(--amber);line-height:1">72.5</div><div style="font-size:12px;color:var(--ink3);margin-top:3px">Watch Zone · 2.5pts below 75</div></div>
-    <div class="card" style="text-align:center"><div class="label" style="margin-bottom:7px">Score Range</div><div style="font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:700;color:var(--ink);line-height:1">26<span style="font-size:26px;font-weight:300">pt</span></div><div style="font-size:12px;color:var(--ink3);margin-top:3px">Low 57 · High 83</div></div>
-    <div class="card" style="text-align:center"><div class="label" style="margin-bottom:7px">Domains at Strength</div><div style="font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:700;color:var(--green);line-height:1">2</div><div style="font-size:12px;color:var(--ink3);margin-top:3px">Conscience 80.2 · Mindset 77.0</div></div>
-    <div class="card" style="text-align:center"><div class="label" style="margin-bottom:7px">Erosion Risk</div><div style="font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:700;color:var(--amber);line-height:1">24<span style="font-size:26px;font-weight:300">%</span></div><div style="font-size:12px;color:var(--ink3);margin-top:3px">6 of 25 leaders</div></div>
-  </div>
-  <div class="card reveal" style="padding:32px">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px">
-      <div class="label">Full Domain Heatmap</div>
-      <div style="display:flex;gap:14px">
-        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink4);font-family:'DM Mono',monospace"><span style="width:8px;height:8px;background:var(--green);border-radius:2px;display:inline-block"></span>≥75 Strength</span>
-        <span style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--ink4);font-family:'DM Mono',monospace"><span style="width:8px;height:8px;background:var(--amber);border-radius:2px;display:inline-block"></span>60–74 Watch</span>
-      </div>
-    </div>
-    <div class="abar-group" id="dashboardBars">
-      <div class="abar-row"><div class="abar-label">Conscience<span class="abar-sub">Ethical Clarity</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#047857,var(--green))" data-width="80.2"><span>80.2</span></div></div><div class="abar-score" style="color:var(--green)">80.2</div></div>
-      <div class="abar-row"><div class="abar-label">Mindset<span class="abar-sub">Adaptive Thinking</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#047857,var(--green))" data-width="77.0"><span>77.0</span></div></div><div class="abar-score" style="color:var(--green)">77.0</div></div>
-      <div class="abar-row"><div class="abar-label">Reflection<span class="abar-sub">Learning Loops</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#92400e,#eab308)" data-width="69.2"><span>69.2</span></div></div><div class="abar-score" style="color:#ca8a04">69.2</div></div>
-      <div class="abar-row"><div class="abar-label">Wellbeing<span class="abar-sub">Renewal Capacity</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#92400e,#eab308)" data-width="68.2"><span>68.2</span></div></div><div class="abar-score" style="color:var(--amber)">68.2</div></div>
-      <div class="abar-row"><div class="abar-label">Connection<span class="abar-sub">Relational Health</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#b45309,#f59e0b)" data-width="66.1"><span>66.1</span></div></div><div class="abar-score" style="color:var(--amber)">66.1</div></div>
-      <div class="abar-row"><div class="abar-label">Psych Safety<span class="abar-sub">PSI Composite</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,var(--blue),var(--blue3))" data-width="66"><span>66</span></div></div><div class="abar-score" style="color:var(--blue2)">66</div></div>
-    </div>
-    <div class="insight" style="margin-top:22px">
-      <div class="insight-label">Interpretive Summary</div>
-      <p>This cohort presents a meaningfully stronger adaptive profile than typical sector averages — two domains in genuine strength territory, and a mean of 72.5 that is approaching the 75-point threshold. The story here is not one of crisis; it is one of a high-performing group operating at the edge of their reserves. <strong>The Boundaries score of 23.0 is the single anomaly that could destabilise everything else</strong> if left unaddressed at the system level.</p>
-    </div>
-  </div>
-</section>
+10 · ORGANISATIONAL HEALTH
+System Conditions Under Pressure
+The OHI measures whether the organisation's conditions support or undermine performance. In WA Government, the Boundaries score alone signals significant system-level strain.
+ORGANISATIONAL HEALTH INDEX
+62
+Watch Zone
+Threshold: 70+
+The OHI of 63 indicates an organisation that functions but has insufficient adaptive reserves. The most critical signal: Renewal & Learning at 46 — driven by Structured Reflection (46.2) and Feedback-Seeking (60.2).
+CRITICAL PILLAR — RENEWAL & LEARNING
+46
+Below the emerging erosion threshold. The organisation may be consuming adaptive capacity faster than it generates it — with Structured Reflection (46.2) and Feedback-Seeking (60.2) as the primary drivers.
+OHI PILLAR BREAKDOWN
+Direction & Alignment
+76
 
-<!-- S6: RADAR -->
-<div class="divider"></div>
-<section class="section" id="radar">
-  <div class="sec-header reveal">
-    <div class="sec-tag">06 · Domain Radar</div>
-    <h2>Adaptive Capacity<br><em>Profile</em></h2>
-    <p class="sec-lead">Five-domain mapping against the 75-point threshold. Two genuine strengths, three in the Watch Zone — a 14.1-point gap between peak and floor.</p>
-  </div>
-  <div class="radar-section reveal">
-    <div class="radar-container"><canvas id="radarMain" width="400" height="400"></canvas></div>
-    <div>
-      <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:24px">
-        <div class="card" style="padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
-          <div><div style="font-size:13px;font-weight:600;color:var(--ink)">Conscience</div><div style="font-size:11px;color:var(--ink4)">Ethical Clarity · Values · Accountability</div></div>
-          <div style="display:flex;align-items:center;gap:10px"><div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--green)">80.2</div><span class="tag tag-g">Strength</span></div>
-        </div>
-        <div class="card" style="padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
-          <div><div style="font-size:13px;font-weight:600;color:var(--ink)">Mindset</div><div style="font-size:11px;color:var(--ink4)">Growth · Optimism · Self-Efficacy</div></div>
-          <div style="display:flex;align-items:center;gap:10px"><div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--green)">77.0</div><span class="tag tag-g">Strength</span></div>
-        </div>
-        <div class="card" style="padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
-          <div><div style="font-size:13px;font-weight:600;color:var(--ink)">Reflection</div><div style="font-size:11px;color:var(--ink4)">Learning · Feedback · Metacognition</div></div>
-          <div style="display:flex;align-items:center;gap:10px"><div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--amber)">69.2</div><span class="tag tag-a">Watch Zone</span></div>
-        </div>
-        <div class="card" style="padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
-          <div><div style="font-size:13px;font-weight:600;color:var(--ink)">Wellbeing</div><div style="font-size:11px;color:var(--ink4)">Sleep · Mindfulness · Physical Activity</div></div>
-          <div style="display:flex;align-items:center;gap:10px"><div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--amber)">68.2</div><span class="tag tag-a">Watch Zone</span></div>
-        </div>
-        <div class="card" style="padding:14px 18px;display:flex;align-items:center;justify-content:space-between">
-          <div><div style="font-size:13px;font-weight:600;color:var(--ink)">Connection</div><div style="font-size:11px;color:var(--ink4)">Belonging · Boundaries · Relational Health</div></div>
-          <div style="display:flex;align-items:center;gap:10px"><div style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--amber)">66.1</div><span class="tag tag-a">Watch Zone</span></div>
-        </div>
-      </div>
-      <div class="insight">
-        <div class="insight-label">The 14.1-Point Gap</div>
-        <p>A 14.1-point gap between Conscience (peak) and Connection (floor) tells a specific story: this cohort leads with values and thinking strength, but relational and recovery infrastructure is under strain. <strong>The Boundaries subdomain (23.0) is dragging Connection down significantly</strong> — without it, Connection would likely sit in the Watch Zone upper band.</p>
-      </div>
-    </div>
-  </div>
-</section>
+Leadership Effectiveness
+70
 
-<!-- S7: DISTRIBUTION -->
-<div class="divider"></div>
-<section class="section" id="distribution">
-  <div class="sec-header reveal">
-    <div class="sec-tag">07 · Distribution Patterns</div>
-    <h2>How the Cohort<br><em>Actually Clusters</em></h2>
-    <p class="sec-lead">The domain averages conceal meaningful spread. Mindset and Conscience show almost no low scorers — Connection and Wellbeing show a long tail of risk.</p>
-  </div>
-  <div class="reveal" style="margin-bottom:36px">
-    <div style="display:flex;gap:18px;margin-bottom:18px;flex-wrap:wrap">
-      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink3);font-family:'DM Mono',monospace"><span style="width:10px;height:10px;background:var(--green);border-radius:3px;display:inline-block"></span>≥75 · High Adaptive</span>
-      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink3);font-family:'DM Mono',monospace"><span style="width:10px;height:10px;background:var(--amber);border-radius:3px;display:inline-block"></span>60–74 · Moderate</span>
-      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink3);font-family:'DM Mono',monospace"><span style="width:10px;height:10px;background:#f97316;border-radius:3px;display:inline-block"></span>45–59 · Low</span>
-      <span style="display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink3);font-family:'DM Mono',monospace"><span style="width:10px;height:10px;background:var(--rose);border-radius:3px;display:inline-block"></span>&lt;45 · Critical</span>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:9px">
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center">
-        <div style="font-size:13px;font-weight:500;text-align:right;color:var(--ink)">Mindset</div>
-        <div style="height:36px;display:flex;border-radius:10px;overflow:hidden;gap:1px">
-          <div style="width:68%;background:linear-gradient(90deg,#047857,var(--green));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">68%</div>
-          <div style="width:32%;background:linear-gradient(90deg,#92400e,var(--amber));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">32%</div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center">
-        <div style="font-size:13px;font-weight:500;text-align:right;color:var(--ink)">Conscience</div>
-        <div style="height:36px;display:flex;border-radius:10px;overflow:hidden;gap:1px">
-          <div style="width:64%;background:linear-gradient(90deg,#047857,var(--green));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">64%</div>
-          <div style="width:36%;background:linear-gradient(90deg,#92400e,var(--amber));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">36%</div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center">
-        <div style="font-size:13px;font-weight:500;text-align:right;color:var(--ink)">Reflection</div>
-        <div style="height:36px;display:flex;border-radius:10px;overflow:hidden;gap:1px">
-          <div style="width:36%;background:linear-gradient(90deg,#047857,var(--green));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">36%</div>
-          <div style="width:44%;background:linear-gradient(90deg,#92400e,var(--amber));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">44%</div>
-          <div style="width:20%;background:linear-gradient(90deg,#9a3412,#f97316);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">20%</div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center">
-        <div style="font-size:13px;font-weight:500;text-align:right;color:var(--ink)">Wellbeing</div>
-        <div style="height:36px;display:flex;border-radius:10px;overflow:hidden;gap:1px">
-          <div style="width:32%;background:linear-gradient(90deg,#047857,var(--green));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">32%</div>
-          <div style="width:44%;background:linear-gradient(90deg,#92400e,var(--amber));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">44%</div>
-          <div style="width:16%;background:linear-gradient(90deg,#9a3412,#f97316);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">16%</div>
-          <div style="width:8%;background:linear-gradient(90deg,#9f1239,var(--rose));display:flex;align-items:center;justify-content:center;color:white;font-size:10px;font-weight:600">8%</div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center">
-        <div style="font-size:13px;font-weight:500;text-align:right;color:var(--ink)">Connection</div>
-        <div style="height:36px;display:flex;border-radius:10px;overflow:hidden;gap:1px">
-          <div style="width:32%;background:linear-gradient(90deg,#047857,var(--green));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">32%</div>
-          <div style="width:36%;background:linear-gradient(90deg,#92400e,var(--amber));display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">36%</div>
-          <div style="width:24%;background:linear-gradient(90deg,#9a3412,#f97316);display:flex;align-items:center;justify-content:center;color:white;font-size:11px;font-weight:600">24%</div>
-          <div style="width:8%;background:linear-gradient(90deg,#9f1239,var(--rose));display:flex;align-items:center;justify-content:center;color:white;font-size:10px;font-weight:600">8%</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="grid-2 reveal" style="gap:18px">
-    <div class="card" style="background:linear-gradient(135deg,var(--blue),var(--blue2));border:none">
-      <div class="label" style="color:rgba(255,255,255,.6);margin-bottom:10px">Multi-Domain Erosion Index</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:88px;font-weight:700;color:white;line-height:1">24<span style="font-size:36px;font-weight:300">%</span></div>
-      <div style="color:rgba(255,255,255,.7);font-size:13px;margin-top:4px;margin-bottom:18px">Below 60 in 2 or more domains simultaneously</div>
-      <div style="border-top:1px solid rgba(255,255,255,.15);padding-top:14px;font-size:13px;color:rgba(255,255,255,.6);font-style:italic">6 of 25 leaders — lower than sector average, but not low enough to ignore</div>
-    </div>
-    <div class="card" style="display:flex;flex-direction:column;gap:14px">
-      <div class="label" style="margin-bottom:2px">Risk Cluster Distribution</div>
-      <div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--ink2)">0–1 domain at risk</span><span style="font-family:'DM Mono',monospace;color:var(--green);font-weight:500">76% · 19 leaders</span></div>
-        <div style="background:var(--pale);height:14px;border-radius:7px;overflow:hidden"><div style="width:76%;height:100%;background:linear-gradient(90deg,#047857,var(--green));border-radius:7px"></div></div>
-        <div style="font-size:11px;color:var(--ink4);margin-top:3px">Stable or Watch Zone — programme engagement as planned</div>
-      </div>
-      <div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--ink2)">2 domains at risk</span><span style="font-family:'DM Mono',monospace;color:var(--amber);font-weight:500">20% · 5 leaders</span></div>
-        <div style="background:var(--pale);height:14px;border-radius:7px;overflow:hidden"><div style="width:20%;height:100%;background:linear-gradient(90deg,#92400e,var(--amber));border-radius:7px"></div></div>
-        <div style="font-size:11px;color:var(--ink4);margin-top:3px">Emerging erosion — heightened coaching attention</div>
-      </div>
-      <div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--ink2)">3+ domains at risk</span><span style="font-family:'DM Mono',monospace;color:var(--rose);font-weight:500">4% · 1 leader</span></div>
-        <div style="background:var(--pale);height:14px;border-radius:7px;overflow:hidden"><div style="width:4%;height:100%;background:linear-gradient(90deg,#9f1239,var(--rose));border-radius:7px"></div></div>
-        <div style="font-size:11px;color:var(--ink4);margin-top:3px">Priority individual support required</div>
-      </div>
-    </div>
-  </div>
-</section>
+Accountability
+68
 
-<!-- S8: SUBDOMAINS -->
-<div class="divider"></div>
-<section class="section" id="subdomains">
-  <div class="sec-header reveal">
-    <div class="sec-tag">08 · Subdomain Precision</div>
-    <h2>Strengths &amp;<br><em>Erosion Indicators</em></h2>
-    <p class="sec-lead">The 31 subdomains reveal the precise levers available for targeted coaching intervention.</p>
-  </div>
-  <div class="grid-2 reveal" style="gap:32px">
-    <div>
-      <div class="label" style="margin-bottom:14px;padding-bottom:9px;border-bottom:2px solid var(--green)">▲ Top 5 Strength Anchors</div>
-      <div class="abar-group" id="strengthBars">
-        <div class="abar-row"><div class="abar-label">Ethical Sensitivity<span class="abar-sub">Conscience</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#047857,var(--green))" data-width="86.0"><span>86.0</span></div></div><div class="abar-score" style="color:var(--green)">86.0</div></div>
-        <div class="abar-row"><div class="abar-label">Pro-Social Contribution<span class="abar-sub">Connection</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#047857,var(--green))" data-width="86.0"><span>86.0</span></div></div><div class="abar-score" style="color:var(--green)">86.0</div></div>
-        <div class="abar-row"><div class="abar-label">Accountability<span class="abar-sub">Conscience</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#047857,var(--green))" data-width="83.0"><span>83.0</span></div></div><div class="abar-score" style="color:var(--green)">83.0</div></div>
-        <div class="abar-row"><div class="abar-label">Physical Activity<span class="abar-sub">Wellbeing</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#047857,var(--green))" data-width="82.0"><span>82.0</span></div></div><div class="abar-score" style="color:var(--green)">82.0</div></div>
-        <div class="abar-row"><div class="abar-label">Optimism<span class="abar-sub">Mindset</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#047857,var(--green))" data-width="80.2"><span>80.2</span></div></div><div class="abar-score" style="color:var(--green)">80.2</div></div>
-      </div>
-      <div class="insight" style="margin-top:18px">
-        <div class="insight-label">Strength Pattern</div>
-        <p>Strengths cluster around <strong>ethical service, accountability, and physical wellbeing</strong> — a profile consistent with public sector leaders who are deeply committed to their role and their own physical health, but may be sacrificing psychological recovery and relational boundaries to sustain that commitment.</p>
-      </div>
-    </div>
-    <div>
-      <div class="label" style="margin-bottom:14px;padding-bottom:9px;border-bottom:2px solid var(--rose)">▼ Bottom 5 Erosion Indicators</div>
-      <div class="abar-group" id="erosionBars">
-        <div class="abar-row"><div class="abar-label">Boundaries<span class="abar-sub">Connection</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#9f1239,var(--rose))" data-width="23.0"><span>23.0</span></div></div><div class="abar-score" style="color:var(--rose)">23.0</div></div>
-        <div class="abar-row"><div class="abar-label">Structured Reflection<span class="abar-sub">Reflection</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#9f1239,var(--rose))" data-width="46.2"><span>46.2</span></div></div><div class="abar-score" style="color:var(--rose)">46.2</div></div>
-        <div class="abar-row"><div class="abar-label">Mindfulness<span class="abar-sub">Wellbeing</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#9a3412,#f97316)" data-width="56.0"><span>56.0</span></div></div><div class="abar-score" style="color:#ea580c">56.0</div></div>
-        <div class="abar-row"><div class="abar-label">Emotional Wellbeing<span class="abar-sub">Wellbeing</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#92400e,var(--amber))" data-width="61.3"><span>61.3</span></div></div><div class="abar-score" style="color:var(--amber)">61.3</div></div>
-        <div class="abar-row"><div class="abar-label">Feedback-Seeking<span class="abar-sub">Reflection</span></div><div class="abar-track"><div class="abar-fill" style="background:linear-gradient(90deg,#92400e,var(--amber))" data-width="60.2"><span>60.2</span></div></div><div class="abar-score" style="color:var(--amber)">60.2</div></div>
-      </div>
-      <div class="insight" style="margin-top:18px;background:#fff5f5;border-color:var(--rb)">
-        <div class="insight-label" style="color:var(--rose)">Erosion Pattern</div>
-        <p>Boundaries (23.0) is the defining signal. The co-occurrence of Mindfulness (56.0) and Emotional Wellbeing (61.3) suggests leaders are physically active but <strong>psychologically depleted</strong> — exercising their bodies but not their capacity to rest, reflect, or emotionally regulate. Structured Reflection (46.2) and Feedback-Seeking (60.2) confirm that recovery and learning loops are both compromised.</p>
-      </div>
-    </div>
-  </div>
-</section>
+Culture & Climate
+65
 
-<!-- S9: PSYCH SAFETY -->
-<div class="divider"></div>
-<section class="section" id="psysafety">
-  <div class="sec-header reveal">
-    <div class="sec-tag">09 · Psychological Safety</div>
-    <h2>The Hidden<br><em>Infrastructure</em></h2>
-    <p class="sec-lead">A PSI of 66 sits just below the 70-point threshold. In a government context where hierarchy is pronounced and career consequences are real, this score deserves particular attention.</p>
-  </div>
-  <div class="grid-2 reveal" style="gap:22px;margin-bottom:28px">
-    <div class="psy-quad">
-      <div class="pq pq-1"><span class="pq-badge"><span class="tag tag-a">Moderate</span></span><div class="pq-num">68</div><div class="pq-label">Risk Tolerance</div><div class="pq-sub">Willingness to take interpersonal risks, admit uncertainty</div></div>
-      <div class="pq pq-2"><span class="pq-badge"><span class="tag tag-a">Moderate</span></span><div class="pq-num">70</div><div class="pq-label">Inclusion Safety</div><div class="pq-sub">Sense of belonging and acceptance within the group</div></div>
-      <div class="pq pq-3"><span class="pq-badge"><span class="tag tag-a">Watch</span></span><div class="pq-num">64</div><div class="pq-label">Voice Safety</div><div class="pq-sub">Comfort speaking up, raising concerns, challenging decisions</div></div>
-      <div class="pq pq-4"><span class="pq-badge"><span class="tag tag-r">Risk</span></span><div class="pq-num">60</div><div class="pq-label">Learner Safety</div><div class="pq-sub">Safety to ask questions, make mistakes, and learn openly</div></div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:14px">
-      <div class="card">
-        <div class="label" style="margin-bottom:10px">PSI Overall · 66/100</div>
-        <canvas id="psiDonut" width="180" height="180" style="display:block;margin:0 auto"></canvas>
-        <div style="margin-top:14px;border-top:1px solid var(--pale);padding-top:14px">
-          <div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="font-size:12px;color:var(--ink3)">Industry threshold</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink4)">70+</span></div>
-          <div style="display:flex;justify-content:space-between;margin-bottom:7px"><span style="font-size:12px;color:var(--ink3)">This cohort PSI</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--blue2);font-weight:500">66</span></div>
-          <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Gap to threshold</span><span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--amber)">−4pts</span></div>
-        </div>
-      </div>
-      <div class="insight">
-        <div class="insight-label">Government Context Matters</div>
-        <p>In hierarchical government environments, a PSI of 66 may understate the real degree of self-censoring. Leaders may score their <strong>technical safety</strong> (Inclusion: 70) higher than their <strong>operational safety</strong> (Voice: 64, Learner: 60). The Learner Safety score is particularly significant in a coaching context — leaders who don't feel safe to be wrong in sessions will not fully engage.</p>
-      </div>
-    </div>
-  </div>
-  <div class="grid-2 reveal" style="gap:18px">
-    <div class="card">
-      <div style="font-size:26px;margin-bottom:10px">⚠️</div>
-      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:10px">What a PSI of 66 May Be Costing This Cohort</div>
-      <div class="timeline" style="margin-top:14px">
-        <div class="tl-item"><div class="tl-label">Signal</div><div class="tl-title">Boundaries can't be named</div><div class="tl-body">When Learner Safety is 60 and Boundaries is 23.0, leaders may be experiencing boundary violation without feeling safe to name it — to their manager, their peers, or their coach.</div></div>
-        <div class="tl-item"><div class="tl-label">Signal</div><div class="tl-title">Coaching programme effectiveness at risk</div><div class="tl-body">A PSI of 66 with Learner Safety at 60 means some participants may not be bringing their full reality into coaching sessions. Psychological safety in the room is a prerequisite for coaching outcomes.</div></div>
-        <div class="tl-item"><div class="tl-label">Signal</div><div class="tl-title">Feedback loops stay closed</div><div class="tl-body">Feedback-Seeking at 60.2 combined with low Voice Safety confirms: this group would benefit from honest feedback but may not yet have the conditions to receive or give it safely.</div></div>
-      </div>
-    </div>
-    <div class="card">
-      <div style="font-size:26px;margin-bottom:10px">🔗</div>
-      <div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:10px">PSI as Coaching Infrastructure</div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:16px">Psychological safety is not a soft metric — it is the operating condition for everything else in this programme:</p>
-      <div style="display:flex;flex-direction:column;gap:9px">
-        <div style="background:var(--off);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:var(--ink2)">Structured Reflection stays low without it</span><span class="tag tag-r">46.2</span></div>
-        <div style="background:var(--off);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:var(--ink2)">Feedback-Seeking stays suppressed</span><span class="tag tag-a">60.2</span></div>
-        <div style="background:var(--off);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:var(--ink2)">Boundaries can't be defended</span><span class="tag tag-r">23.0</span></div>
-        <div style="background:var(--off);border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:13px;color:var(--ink2)">Emotional Wellbeing stays depleted</span><span class="tag tag-a">61.3</span></div>
-      </div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-top:14px">The Conscience strength (80.2) provides the ethical foundation from which psychological safety can be deliberately built — people who care about integrity are already predisposed to honest dialogue when the conditions permit it.</p>
-    </div>
-  </div>
-</section>
+Coordination
+63
 
-<!-- S10: ORG HEALTH -->
-<div class="divider"></div>
-<section class="section" id="orghealth">
-  <div class="sec-header reveal">
-    <div class="sec-tag">10 · Organisational Health</div>
-    <h2>System Conditions<br><em>Under Pressure</em></h2>
-    <p class="sec-lead">The OHI measures whether the organisation's conditions support or undermine performance. In WA Government, the Boundaries score alone signals significant system-level strain.</p>
-  </div>
-  <div class="grid-2 reveal" style="gap:22px;margin-bottom:28px">
-    <div>
-      <div class="card" style="margin-bottom:14px;background:linear-gradient(135deg,#eff6ff,#e0f2fe);border-color:rgba(37,99,235,.15)">
-        <div class="label" style="color:var(--blue2);margin-bottom:7px">Organisational Health Index</div>
-        <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:5px">
-          <div style="font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:700;color:var(--blue2);line-height:1">63</div>
-          <div><div class="tag tag-a" style="margin-bottom:5px">Watch Zone</div><div style="font-size:12px;color:var(--ink3)">Threshold: 70+</div></div>
-        </div>
-        <div style="font-size:13px;color:var(--ink3);line-height:1.7">The OHI of 63 indicates an organisation that functions but has insufficient adaptive reserves. The most critical signal: <strong>Renewal & Learning at 46</strong> — driven by Structured Reflection (46.2) and Feedback-Seeking (60.2).</div>
-      </div>
-      <div class="card" style="background:linear-gradient(135deg,#fff1f2,white);border-color:rgba(225,29,72,.15)">
-        <div class="label" style="color:var(--rose);margin-bottom:7px">Critical Pillar — Renewal & Learning</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:700;color:var(--rose);line-height:1;margin-bottom:7px">46</div>
-        <p style="font-size:13px;color:var(--ink3);line-height:1.7">Below the emerging erosion threshold. The organisation may be consuming adaptive capacity faster than it generates it — with Structured Reflection (46.2) and Feedback-Seeking (60.2) as the primary drivers.</p>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:10px">
-      <div class="label" style="margin-bottom:6px">OHI Pillar Breakdown</div>
-      <div class="card" style="padding:22px">
-        <div style="display:flex;flex-direction:column;gap:14px" id="ohiBars">
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:var(--ink);font-weight:500">Direction & Alignment</span><span style="font-family:'DM Mono',monospace;color:var(--green)">76</span></div><div class="ohi-bar"><div class="ohi-fill" data-width="76" style="background:linear-gradient(90deg,#047857,var(--green))"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:var(--ink);font-weight:500">Leadership Effectiveness</span><span style="font-family:'DM Mono',monospace;color:var(--amber)">70</span></div><div class="ohi-bar"><div class="ohi-fill" data-width="70"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:var(--ink);font-weight:500">Accountability</span><span style="font-family:'DM Mono',monospace;color:var(--amber)">68</span></div><div class="ohi-bar"><div class="ohi-fill" data-width="68"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:var(--ink);font-weight:500">Culture & Climate</span><span style="font-family:'DM Mono',monospace;color:var(--amber)">65</span></div><div class="ohi-bar"><div class="ohi-fill" data-width="65"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:var(--ink);font-weight:500">Coordination</span><span style="font-family:'DM Mono',monospace;color:var(--amber)">63</span></div><div class="ohi-bar"><div class="ohi-fill" data-width="63"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:4px"><span style="color:var(--ink);font-weight:500">Renewal & Learning</span><span style="font-family:'DM Mono',monospace;color:var(--rose)">46 ⚠</span></div><div class="ohi-bar"><div class="ohi-fill" data-width="46" style="background:linear-gradient(90deg,#9f1239,var(--rose))"></div></div></div>
-        </div>
-      </div>
-      <div class="insight">
-        <div class="insight-label">The Government Context</div>
-        <p>Direction & Alignment at 76 is the strongest OHI pillar — consistent with the Conscience strength. Government leaders know their purpose and are committed to it. The challenge is that <strong>the conditions do not support the learning, recovery, and honest dialogue</strong> needed to sustain that commitment long-term.</p>
-      </div>
-    </div>
-  </div>
-</section>
+Renewal & Learning
+46 ⚠
 
-<!-- S11: RISK REGISTER -->
-<div class="divider"></div>
-<section class="section" id="risk">
-  <div class="sec-header reveal">
-    <div class="sec-tag">11 · Risk Register</div>
-    <h2>Coaching Programme<br><em>Risk Assessment</em></h2>
-    <p class="sec-lead">RAG, PSI, and OHI data formalised into a risk register for programme sponsors and senior stakeholders.</p>
-  </div>
-  <table class="risk-tbl reveal">
-    <thead><tr><th>Risk</th><th>Indicator</th><th>Score</th><th>Severity</th><th>Likelihood</th><th>Programme Consequence</th><th>Status</th></tr></thead>
-    <tbody>
-      <tr><td><strong>Boundary Collapse</strong></td><td style="font-family:'DM Mono',monospace;font-size:11px;color:var(--ink4)">Boundaries · Connection</td><td style="font-family:'DM Mono',monospace;color:var(--rose);font-weight:600">23.0</td><td><span class="tag tag-r">Critical</span></td><td><span class="tag tag-r">Active</span></td><td style="font-size:12px">Decision fatigue, cognitive depletion, coaching engagement at risk</td><td><span class="tag tag-r">Escalate</span></td></tr>
-      <tr><td><strong>Learning Infrastructure Deficit</strong></td><td style="font-family:'DM Mono',monospace;font-size:11px;color:var(--ink4)">Structured Reflection</td><td style="font-family:'DM Mono',monospace;color:var(--rose);font-weight:600">46.2</td><td><span class="tag tag-r">High</span></td><td><span class="tag tag-r">High</span></td><td style="font-size:12px">Coaching outcomes reduced if reflection isn't built into cadence</td><td><span class="tag tag-a">Monitor</span></td></tr>
-      <tr><td><strong>Learner Safety Deficit</strong></td><td style="font-family:'DM Mono',monospace;font-size:11px;color:var(--ink4)">PSI · Learner Safety</td><td style="font-family:'DM Mono',monospace;color:var(--rose);font-weight:600">60</td><td><span class="tag tag-a">High</span></td><td><span class="tag tag-a">Medium</span></td><td style="font-size:12px">Participants may not bring full reality into coaching sessions</td><td><span class="tag tag-a">Monitor</span></td></tr>
-      <tr><td><strong>Psychological Depletion</strong></td><td style="font-family:'DM Mono',monospace;font-size:11px;color:var(--ink4)">Mindfulness · Emotional Wellbeing</td><td style="font-family:'DM Mono',monospace;color:var(--amber);font-weight:600">56–61</td><td><span class="tag tag-a">High</span></td><td><span class="tag tag-r">High</span></td><td style="font-size:12px">Emotional regulation capacity reduced — compounds all other risks</td><td><span class="tag tag-a">Monitor</span></td></tr>
-      <tr><td><strong>Priority Individual</strong></td><td style="font-family:'DM Mono',monospace;font-size:11px;color:var(--ink4)">Multi-domain · 3+ erosion</td><td style="font-family:'DM Mono',monospace;color:var(--amber);font-weight:600">3 domains</td><td><span class="tag tag-a">Medium</span></td><td><span class="tag tag-a">Medium</span></td><td style="font-size:12px">1 leader requires confidential priority coaching attention</td><td><span class="tag tag-a">Watch</span></td></tr>
-      <tr><td><strong>Renewal & Learning</strong></td><td style="font-family:'DM Mono',monospace;font-size:11px;color:var(--ink4)">OHI · Renewal pillar</td><td style="font-family:'DM Mono',monospace;color:var(--amber);font-weight:600">46</td><td><span class="tag tag-a">Medium</span></td><td><span class="tag tag-a">Medium</span></td><td style="font-size:12px">System conditions may undermine programme gains at the organisational level</td><td><span class="tag tag-a">Watch</span></td></tr>
-    </tbody>
-  </table>
-</section>
+THE GOVERNMENT CONTEXT
+Direction & Alignment at 76 is the strongest OHI pillar — consistent with the Conscience strength. Government leaders know their purpose and are committed to it. The challenge is that the conditions do not support the learning, recovery, and honest dialogue needed to sustain that commitment long-term.
 
-<!-- S12: PIPELINE -->
-<div class="divider"></div>
-<section class="section" id="pipeline">
-  <div class="sec-header reveal">
-    <div class="sec-tag">12 · Leadership Pipeline</div>
-    <h2>Succession &amp;<br><em>Capability Risk</em></h2>
-    <p class="sec-lead">Coaching cohort data has direct implications for how WA Government understands its leadership pipeline — and the invisible risks within it.</p>
-  </div>
-  <div class="grid-2 reveal" style="gap:22px">
-    <div class="card">
-      <div style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:10px">Pipeline Intelligence from This Data</div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:18px">This cohort's data reveals that high-performing government leaders may be over-functioning on Conscience and Mindset while quietly depleting in Boundaries and Emotional Wellbeing. Performance reviews will not surface this — but over time, it becomes a pipeline risk.</p>
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--ink2)">True capacity visibility</span><span style="font-family:'DM Mono',monospace;color:var(--amber)">Compromised</span></div><div style="background:var(--pale);height:7px;border-radius:4px;overflow:hidden"><div style="width:40%;height:100%;background:linear-gradient(90deg,#92400e,var(--amber));border-radius:4px"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--ink2)">Succession readiness</span><span style="font-family:'DM Mono',monospace;color:var(--amber)">Moderate</span></div><div style="background:var(--pale);height:7px;border-radius:4px;overflow:hidden"><div style="width:58%;height:100%;background:linear-gradient(90deg,#92400e,var(--amber));border-radius:4px"></div></div></div>
-        <div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:5px"><span style="color:var(--ink2)">Retention risk (24% erosion)</span><span style="font-family:'DM Mono',monospace;color:var(--amber)">Emerging</span></div><div style="background:var(--pale);height:7px;border-radius:4px;overflow:hidden"><div style="width:35%;height:100%;background:linear-gradient(90deg,#9f1239,var(--rose));border-radius:4px"></div></div></div>
-      </div>
-    </div>
-    <div class="card">
-      <div style="font-size:15px;font-weight:600;color:var(--ink);margin-bottom:10px">Matt's Coaching Programme as Pipeline Intelligence</div>
-      <p style="font-size:13px;color:var(--ink3);line-height:1.8;margin-bottom:18px">This coaching cohort is generating something WA Government doesn't have elsewhere: real-time, anonymised data on leadership adaptive capacity. This is pipeline intelligence that performance reviews can't produce.</p>
-      <div style="display:flex;flex-direction:column;gap:9px">
-        <div class="ia"><span class="ia-arrow">→</span>Leaders operating on depleted reserves may appear to perform while drawing on reserves that will eventually run out</div>
-        <div class="ia"><span class="ia-arrow">→</span>A Q3 2026 reassessment will show whether the programme is strengthening or maintaining reserves</div>
-        <div class="ia"><span class="ia-arrow">→</span>The Boundaries score (23.0) is a system-level signal that could inform WA Government workforce policy</div>
-      </div>
-    </div>
-  </div>
-</section>
+11 · RISK REGISTER
+Coaching Programme Risk Assessment
+RAG, PSI, and OHI data formalised into a risk register for programme sponsors and senior stakeholders.
+RISK
+INDICATOR
+SCORE
+SEVERITY
+LIKELIHOOD
+PROGRAMME CONSEQUENCE
+STATUS
+Boundary Collapse
+Boundaries · Connection
+23.0
+Critical
+Active
+Decision fatigue, cognitive depletion, coaching engagement at risk
+Escalate
+Learning Infrastructure Deficit
+Structured Reflection
+46.2
+High
+High
+Coaching outcomes reduced if reflection isn't built into cadence
+Monitor
+Learner Safety Deficit
+PSI · Learner Safety
+60
+High
+Medium
+Participants may not bring full reality into coaching sessions
+Monitor
+Psychological Depletion
+Mindfulness · Emotional Wellbeing
+56–61
+High
+High
+Emotional regulation capacity reduced — compounds all other risks
+Monitor
+Priority Individual
+Multi-domain · 3+ erosion
+3 domains
+Medium
+Medium
+1 leader requires confidential priority coaching attention
+Watch
+Renewal & Learning
+OHI · Renewal pillar
+46
+Medium
+Medium
+System conditions may undermine programme gains at the organisational level
+Watch
 
-<!-- S13: BENCHMARK -->
-<div class="divider"></div>
-<section class="section" id="benchmark">
-  <div class="sec-header reveal">
-    <div class="sec-tag">13 · Benchmark & Trend</div>
-    <h2>How This Cohort<br><em>Compares</em></h2>
-    <p class="sec-lead">Domain scores against indicative sector averages. This cohort is performing above average in Conscience and Mindset — with Connection the standout gap.</p>
-  </div>
-  <div class="grid-5 stagger reveal" style="margin-bottom:14px">
-    <div class="card" style="padding:18px;border-color:rgba(5,150,105,.2);background:linear-gradient(135deg,#f0fdf4,white)">
-      <div class="label" style="margin-bottom:9px">Conscience</div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12px;color:var(--ink3)">This cohort</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--green);font-weight:500">80.2</span></div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:9px"><span style="font-size:12px;color:var(--ink3)">Sector avg*</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--ink4)">68.0</span></div>
-      <div style="padding-top:7px;border-top:1px solid var(--pale);font-family:'DM Mono',monospace;font-size:10px;color:var(--green)">▲ +12.2 above</div>
-    </div>
-    <div class="card" style="padding:18px;border-color:rgba(5,150,105,.2);background:linear-gradient(135deg,#f0fdf4,white)">
-      <div class="label" style="margin-bottom:9px">Mindset</div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12px;color:var(--ink3)">This cohort</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--green);font-weight:500">77.0</span></div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:9px"><span style="font-size:12px;color:var(--ink3)">Sector avg*</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--ink4)">71.0</span></div>
-      <div style="padding-top:7px;border-top:1px solid var(--pale);font-family:'DM Mono',monospace;font-size:10px;color:var(--green)">▲ +6.0 above</div>
-    </div>
-    <div class="card" style="padding:18px">
-      <div class="label" style="margin-bottom:9px">Reflection</div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12px;color:var(--ink3)">This cohort</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--blue2);font-weight:500">69.2</span></div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:9px"><span style="font-size:12px;color:var(--ink3)">Sector avg*</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--ink4)">67.0</span></div>
-      <div style="padding-top:7px;border-top:1px solid var(--pale);font-family:'DM Mono',monospace;font-size:10px;color:var(--green)">▲ +2.2 above</div>
-    </div>
-    <div class="card" style="padding:18px">
-      <div class="label" style="margin-bottom:9px">Wellbeing</div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12px;color:var(--ink3)">This cohort</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--blue2);font-weight:500">68.2</span></div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:9px"><span style="font-size:12px;color:var(--ink3)">Sector avg*</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--ink4)">63.0</span></div>
-      <div style="padding-top:7px;border-top:1px solid var(--pale);font-family:'DM Mono',monospace;font-size:10px;color:var(--green)">▲ +5.2 above</div>
-    </div>
-    <div class="card" style="padding:18px">
-      <div class="label" style="margin-bottom:9px">Connection</div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12px;color:var(--ink3)">This cohort</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--blue2);font-weight:500">66.1</span></div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:9px"><span style="font-size:12px;color:var(--ink3)">Sector avg*</span><span style="font-family:'DM Mono',monospace;font-size:13px;color:var(--ink4)">65.0</span></div>
-      <div style="padding-top:7px;border-top:1px solid var(--pale);font-family:'DM Mono',monospace;font-size:10px;color:var(--green)">▲ +1.1 above</div>
-    </div>
-  </div>
-  <p style="font-size:11px;color:var(--ink4);font-style:italic;text-align:center;margin-bottom:32px">* Indicative averages — will be replaced with verified benchmarks as RAG cohort data grows. Developmental comparisons only.</p>
-  <div class="grid-4 stagger reveal">
-    <div class="card" style="border:2px solid var(--blue2);background:linear-gradient(135deg,#eff6ff,white);position:relative">
-      <div style="position:absolute;top:12px;right:12px;background:var(--b);border:1px solid var(--bb);color:var(--blue2);font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.1em;padding:2px 7px;border-radius:20px">BASELINE</div>
-      <div class="label" style="margin-bottom:10px;color:var(--blue2)">Q1 · 2026</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:700;color:var(--amber);line-height:1">72.5</div>
-      <div style="font-size:12px;color:var(--ink3);margin-top:5px">Mean · PSI 66 · OHI 63</div>
-      <div style="font-size:11px;color:var(--ink4);margin-top:3px">Boundaries: 23.0</div>
-    </div>
-    <div class="card" style="opacity:.45"><div class="label" style="margin-bottom:10px">Q3 · 2026</div><div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--ink3);line-height:1">—</div><div style="font-size:12px;color:var(--ink4);margin-top:5px">Target: Mean 75+ · PSI 70+</div></div>
-    <div class="card" style="opacity:.3"><div class="label" style="margin-bottom:10px">Q1 · 2027</div><div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--ink3);line-height:1">—</div><div style="font-size:12px;color:var(--ink4);margin-top:5px">Awaiting data</div></div>
-    <div class="card" style="opacity:.15"><div class="label" style="margin-bottom:10px">Q3 · 2027</div><div style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:600;color:var(--ink3);line-height:1">—</div><div style="font-size:12px;color:var(--ink4);margin-top:5px">Awaiting data</div></div>
-  </div>
-</section>
+12 · LEADERSHIP PIPELINE
+Succession & Capability Risk
+Coaching cohort data has direct implications for how WA Government understands its leadership pipeline — and the invisible risks within it.
+Pipeline Intelligence from This Data
+This cohort's data reveals that high-performing government leaders may be over-functioning on Conscience and Mindset while quietly depleting in Boundaries and Emotional Wellbeing. Performance reviews will not surface this — but over time, it becomes a pipeline risk.
+True capacity visibility
+Compromised
 
-<!-- S14: INTERVENTIONS -->
-<div class="divider"></div>
-<section class="section" id="action">
-  <div class="sec-header reveal">
-    <div class="sec-tag">14 · Strategic Interventions</div>
-    <h2>Three Levels of<br><em>Intervention</em></h2>
-    <p class="sec-lead">Mapped across individual, team, and system dimensions — each level is necessary. Coaching alone (individual level) will not close these gaps without attention at the system level.</p>
-  </div>
-  <div class="grid-3 stagger reveal" style="margin-bottom:44px">
-    <div class="interv interv-i">
-      <div class="interv-accent"></div>
-      <div class="interv-level">Individual · In-Coaching</div>
-      <div class="interv-title">Reflection & Recovery</div>
-      <div class="interv-body">Boundaries (23.0), Mindfulness (56.0), and Learner Safety (60) indicate that individual renewal practices are both insufficient and culturally unsupported. The coaching programme is the immediate intervention point — but requires specific focus on these areas.</div>
-      <div class="interv-actions">
-        <div class="ia"><span class="ia-arrow">→</span>Dedicated Structured Reflection practice — 20 mins per session minimum</div>
-        <div class="ia"><span class="ia-arrow">→</span>Explicit boundary-mapping exercise: what's within vs outside your control</div>
-        <div class="ia"><span class="ia-arrow">→</span>Priority 1:1 support for the 1 leader with 3+ domain erosion</div>
-      </div>
-    </div>
-    <div class="interv interv-t">
-      <div class="interv-accent"></div>
-      <div class="interv-level">Group · Cohort Level</div>
-      <div class="interv-title">Safety & Honest Dialogue</div>
-      <div class="interv-body">Voice Safety (64), Learner Safety (60), and Feedback-Seeking (60.2) indicate the group needs deliberate work to create the conditions for honest dialogue within the programme. The Conscience strength is the foundation for this.</div>
-      <div class="interv-actions">
-        <div class="ia"><span class="ia-arrow">→</span>Group psychological safety norms session — co-created, not imposed</div>
-        <div class="ia"><span class="ia-arrow">→</span>Structured peer feedback protocols built into group sessions</div>
-        <div class="ia"><span class="ia-arrow">→</span>Use Conscience (80.2) as the anchor: honest dialogue is an ethical act</div>
-      </div>
-    </div>
-    <div class="interv interv-s">
-      <div class="interv-accent"></div>
-      <div class="interv-level">System · Sponsor Level</div>
-      <div class="interv-title">WA Government Conditions</div>
-      <div class="interv-body">Boundaries at 23.0 across 25 leaders is a system signal requiring a system response. Matt's coaching programme cannot — and should not have to — compensate for workload, role design, and always-on culture conditions. This requires sponsor engagement.</div>
-      <div class="interv-actions">
-        <div class="ia"><span class="ia-arrow">→</span>Present Boundaries finding (anonymised, aggregated) to programme sponsors</div>
-        <div class="ia"><span class="ia-arrow">→</span>Request workload and role design review as a companion initiative</div>
-        <div class="ia"><span class="ia-arrow">→</span>Frame as a workforce sustainability risk, not a performance deficit</div>
-      </div>
-    </div>
-  </div>
+Succession readiness
+Moderate
 
-  <!-- Questions -->
-  <div class="sec-header reveal" style="margin-bottom:24px">
-    <div class="sec-tag">15 · Reflective Questions</div>
-    <h2>Questions for Matt<br>&amp; <em>This Cohort</em></h2>
-  </div>
-  <div class="q-list reveal">
-    <div class="q-item"><div class="q-num">1</div><div class="q-text">Boundaries scored 23.0 across all 25 leaders. What does that tell us about the WA Government working conditions that this cohort navigates daily — and what would need to change structurally for boundary-setting to feel safe, normal, and expected?</div></div>
-    <div class="q-item"><div class="q-num">2</div><div class="q-text">Structured Reflection sits at 46.2, while Action Experimentation scores 77.0. This cohort acts well but may not be pausing to learn deeply. What would a regular, protected reflection practice look like in a government leadership context — and what would make it sustainable?</div></div>
-    <div class="q-item"><div class="q-num">3</div><div class="q-text">Learner Safety is 60 in a coaching context. What would it take for each person in this cohort to feel genuinely safe to be wrong, to not know, and to ask for help — within this programme and within their organisation?</div></div>
-    <div class="q-item"><div class="q-num">4</div><div class="q-text">This cohort has exceptional Conscience strength — 80.2, with Ethical Sensitivity and Pro-Social Contribution both at 86.0. How do we use that ethical foundation as a platform to build the psychological safety and recovery infrastructure that's currently missing?</div></div>
-  </div>
-</section>
+Retention risk (24% erosion)
+Emerging
 
-<footer>
-  <div><strong>Matt Brown's Coaching Cohort</strong> · WA Government Leadership · Q1 2026</div>
-  <div>N = 25 · Fully Anonymised · Coaching Use Only</div>
-  <div>Confidential · RAG Intelligence · 2026</div>
-</footer>
+Matt's Coaching Programme as Pipeline Intelligence
+This coaching cohort is generating something WA Government doesn't have elsewhere: real-time, anonymised data on leadership adaptive capacity. This is pipeline intelligence that performance reviews can't produce.
+→
+Leaders operating on depleted reserves may appear to perform while drawing on reserves that will eventually run out
+→
+A Q3 2026 reassessment will show whether the programme is strengthening or maintaining reserves
+→
+The Boundaries score (23.0) is a system-level signal that could inform WA Government workforce policy
 
-<script>
-const prog = document.getElementById('progress');
-window.addEventListener('scroll', () => {
-  prog.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
-}, {passive:true});
+13 · BENCHMARK & TREND
+How This Cohort Compares
+Domain scores against indicative sector averages. This cohort is performing above average in Conscience and Mindset — with Connection the standout gap.
+CONSCIENCE
+This cohort
+80.2
+Sector avg*
+68.0
+▲ +11.7 above
+MINDSET
+This cohort
+77.0
+Sector avg*
+71.0
+▲ +3.1 above
+REFLECTION
+This cohort
+69.2
+Sector avg*
+67.0
+▼ −0.7 below
+WELLBEING
+This cohort
+68.2
+Sector avg*
+63.0
+▲ +1.9 above
+CONNECTION
+This cohort
+66.1
+Sector avg*
+65.0
+▼ −0.3 below
+* Indicative averages — will be replaced with verified benchmarks as RAG cohort data grows. Developmental comparisons only.
+BASELINE
+Q1 · 2026
+72.5
+Mean · PSI 65 · OHI 62
+Boundaries: 25.0
+Q3 · 2026
+—
+Target: Mean 75+ · PSI 70+
+Q1 · 2027
+—
+Awaiting data
+Q3 · 2027
+—
+Awaiting data
 
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-  let current = '';
-  document.querySelectorAll('[id]').forEach(s => { if(s.getBoundingClientRect().top < 80) current = s.id; });
-  document.querySelectorAll('.nav-item').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
-}, {passive:true});
+14 · STRATEGIC INTERVENTIONS
+Three Levels of Intervention
+Mapped across individual, team, and system dimensions — each level is necessary. Coaching alone (individual level) will not close these gaps without attention at the system level.
 
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.classList.add('visible');
-      e.target.querySelectorAll('.abar-fill[data-width]').forEach(bar => {
-        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; bar.classList.add('triggered'); }, 100);
-      });
-      e.target.querySelectorAll('.ohi-fill[data-width]').forEach(bar => {
-        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 100);
-      });
-    }
-  });
-}, {threshold:0.1});
-document.querySelectorAll('.reveal,.stagger').forEach(el => io.observe(el));
+INDIVIDUAL · IN-COACHING
+Reflection & Recovery
+Boundaries (23.0), Mindfulness (56.0), and Learner Safety (60) indicate that individual renewal practices are both insufficient and culturally unsupported. The coaching programme is the immediate intervention point — but requires specific focus on these areas.
+→
+Dedicated Structured Reflection practice — 20 mins per session minimum
+→
+Explicit boundary-mapping exercise: what's within vs outside your control
+→
+Priority 1:1 support for the 1 leader with 3+ domain erosion
 
-['domainBars','strengthBars','erosionBars','dashboardBars'].forEach(id => {
-  const el = document.getElementById(id);
-  if(!el) return;
-  const obs = new IntersectionObserver(([e]) => {
-    if(e.isIntersecting) {
-      el.querySelectorAll('.abar-fill[data-width]').forEach((bar, i) => {
-        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; bar.classList.add('triggered'); }, i * 110 + 100);
-      });
-      obs.disconnect();
-    }
-  }, {threshold:0.2});
-  obs.observe(el);
-});
+GROUP · COHORT LEVEL
+Safety & Honest Dialogue
+Voice Safety (64), Learner Safety (60), and Feedback-Seeking (60.2) indicate the group needs deliberate work to create the conditions for honest dialogue within the programme. The Conscience strength is the foundation for this.
+→
+Group psychological safety norms session — co-created, not imposed
+→
+Structured peer feedback protocols built into group sessions
+→
+Use Conscience (80.2) as the anchor: honest dialogue is an ethical act
 
-const ohiEl = document.getElementById('ohiBars');
-if(ohiEl) {
-  const obs = new IntersectionObserver(([e]) => {
-    if(e.isIntersecting) {
-      ohiEl.querySelectorAll('.ohi-fill[data-width]').forEach((bar, i) => {
-        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, i * 100 + 100);
-      });
-      obs.disconnect();
-    }
-  }, {threshold:0.2});
-  obs.observe(ohiEl);
-}
-
-// Counters
-function animateCounter(el) {
-  const target = parseFloat(el.dataset.target), suffix = el.dataset.suffix || '';
-  const isDecimal = target % 1 !== 0, duration = 1600, start = performance.now();
-  const update = (now) => {
-    const t = Math.min((now - start) / duration, 1);
-    const ease = 1 - Math.pow(1 - t, 4);
-    el.textContent = (isDecimal ? (ease * target).toFixed(1) : Math.round(ease * target)) + suffix;
-    if(t < 1) requestAnimationFrame(update);
-  };
-  requestAnimationFrame(update);
-}
-const cObs = new IntersectionObserver(([e]) => {
-  if(e.isIntersecting) { e.target.querySelectorAll('.counter-val[data-target]').forEach((el,i) => setTimeout(() => animateCounter(el), i*100)); cObs.disconnect(); }
-}, {threshold:0.3});
-const cGrid = document.querySelector('.counter-grid');
-if(cGrid) cObs.observe(cGrid);
-
-// Particles
-(function() {
-  const c = document.getElementById('particles');
-  for(let i=0;i<18;i++) {
-    const p = document.createElement('div'), s = Math.random()*4+2;
-    p.className = 'particle';
-    p.style.cssText = `width:${s}px;height:${s}px;left:${Math.random()*100}%;top:${Math.random()*100}%;background:${['rgba(37,99,235,.12)','rgba(5,150,105,.1)','rgba(217,119,6,.08)'][Math.floor(Math.random()*3)]};animation-duration:${Math.random()*8+6}s;animation-delay:${Math.random()*6}s;opacity:${Math.random()*.35+.08}`;
-    c.appendChild(p);
-  }
-})();
-
-// Wave
-(function() {
-  const c = document.getElementById('waveCanvas');
-  if(!c) return;
-  const ctx = c.getContext('2d');
-  c.width = window.innerWidth;
-  let t = 0;
-  function draw() {
-    ctx.clearRect(0,0,c.width,c.height);
-    const W=c.width,H=c.height;
-    [[12,0.008,0.015,0.055],[8,0.012,0.02,0.035],[5,0.018,0.025,0.025]].forEach(([amp,freq,speed,alpha],l) => {
-      ctx.beginPath();ctx.moveTo(0,H/2);
-      for(let x=0;x<=W;x++) { ctx.lineTo(x,H/2+Math.sin(x*freq+t*(1+l*.3))*amp+Math.sin(x*freq*2+t*1.5)*(amp*.4)); }
-      ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();
-      ctx.fillStyle=`rgba(37,99,235,${alpha})`;ctx.fill();
-    });
-    t+=0.012; requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
-// Radar
-(function() {
-  const c = document.getElementById('radarMain');
-  if(!c) return;
-  const ctx = c.getContext('2d'), W=400, H=400, cx=W/2, cy=H/2, R=160;
-  const domains = ['Conscience','Mindset','Reflection','Wellbeing','Connection'];
-  const scores = [80.2, 77.0, 69.2, 68.2, 66.1];
-  const N = domains.length;
-  const ang = i => (Math.PI*2/N)*i - Math.PI/2;
-  const pt = (s,i) => { const r=(s/100)*R; return [cx+r*Math.cos(ang(i)),cy+r*Math.sin(ang(i))]; };
-  let anim = 0;
-  function draw() {
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#f8fafc'; ctx.beginPath(); ctx.arc(cx,cy,R+18,0,Math.PI*2); ctx.fill();
-    [20,40,60,75,100].forEach(v => {
-      ctx.beginPath();
-      for(let i=0;i<N;i++) { const[x,y]=pt(v,i); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); }
-      ctx.closePath();
-      if(v===75){ctx.strokeStyle='rgba(5,150,105,.28)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);}
-      else if(v===60){ctx.strokeStyle='rgba(217,119,6,.15)';ctx.lineWidth=1;ctx.setLineDash([3,3]);}
-      else{ctx.strokeStyle='rgba(0,0,0,.05)';ctx.lineWidth=1;ctx.setLineDash([]);}
-      ctx.stroke();ctx.setLineDash([]);
-    });
-    for(let i=0;i<N;i++){ctx.beginPath();ctx.moveTo(cx,cy);const[x,y]=pt(100,i);ctx.lineTo(x,y);ctx.strokeStyle='rgba(0,0,0,.06)';ctx.lineWidth=1;ctx.stroke();}
-    const[tlx,tly]=pt(75,0);
-    ctx.fillStyle='rgba(5,150,105,.65)';ctx.font='500 9px DM Mono,monospace';ctx.textAlign='left';ctx.fillText('75 threshold',tlx+5,tly);
-    const p=Math.min(anim,1);
-    ctx.beginPath();
-    scores.forEach((s,i)=>{ const[x,y]=pt(s*p,i); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); });
-    ctx.closePath();
-    const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
-    g.addColorStop(0,'rgba(37,99,235,.2)');g.addColorStop(1,'rgba(37,99,235,.04)');
-    ctx.fillStyle=g;ctx.fill();
-    ctx.strokeStyle='#2563eb';ctx.lineWidth=2.5;ctx.stroke();
-    scores.forEach((s,i)=>{
-      const[x,y]=pt(s*p,i);
-      ctx.beginPath();ctx.arc(x,y,5,0,Math.PI*2);ctx.fillStyle='#2563eb';ctx.fill();ctx.strokeStyle='white';ctx.lineWidth=2;ctx.stroke();
-    });
-    ctx.textAlign='center';ctx.textBaseline='middle';
-    domains.forEach((d,i)=>{
-      const[x,y]=pt(105,i);
-      ctx.fillStyle=scores[i]>=75?'#047857':'#d97706';
-      ctx.font='600 12px Outfit,sans-serif';ctx.fillText(d,x,y-6);
-      ctx.font='500 11px DM Mono,monospace';ctx.fillText(scores[i],x,y+8);
-    });
-    if(anim<1){anim+=0.025;requestAnimationFrame(draw);}
-  }
-  const robs=new IntersectionObserver(([e])=>{if(e.isIntersecting){anim=0;draw();robs.disconnect();}},{threshold:.2});
-  robs.observe(c);
-})();
-
-// Gauge
-(function() {
-  const c = document.getElementById('gaugeCanvas');
-  if(!c) return;
-  const ctx=c.getContext('2d'),W=200,H=110,cx=W/2,cy=H-5,R=82;
-  function draw(progress) {
-    ctx.clearRect(0,0,W,H);
-    ctx.beginPath();ctx.arc(cx,cy,R,Math.PI,2*Math.PI);ctx.strokeStyle='rgba(255,255,255,.15)';ctx.lineWidth=13;ctx.lineCap='round';ctx.stroke();
-    const g=ctx.createLinearGradient(cx-R,cy,cx+R,cy);
-    g.addColorStop(0,'#f87171');g.addColorStop(.4,'#fbbf24');g.addColorStop(1,'#6ee7b7');
-    ctx.beginPath();ctx.arc(cx,cy,R,Math.PI,Math.PI+Math.PI*(0.65*progress));
-    ctx.strokeStyle=g;ctx.lineWidth=13;ctx.lineCap='round';ctx.stroke();
-  }
-  let p=0;
-  const obs=new IntersectionObserver(([e])=>{
-    if(e.isIntersecting){const tick=()=>{draw(p);if(p<1){p+=.02;requestAnimationFrame(tick);}};tick();obs.disconnect();}
-  },{threshold:.3});obs.observe(c);
-})();
-
-// PSI Donut
-(function() {
-  const c = document.getElementById('psiDonut');
-  if(!c) return;
-  const ctx=c.getContext('2d'),cx=90,cy=90,R=72,inner=50;
-  function draw(p) {
-    ctx.clearRect(0,0,180,180);
-    ctx.beginPath();ctx.arc(cx,cy,R,0,Math.PI*2);ctx.fillStyle='#f1f5f9';ctx.fill();
-    const g=ctx.createLinearGradient(cx-R,cy,cx+R,cy);g.addColorStop(0,'#1e40af');g.addColorStop(1,'#3b82f6');
-    ctx.beginPath();ctx.arc(cx,cy,R,-Math.PI/2,-Math.PI/2+Math.PI*2*(0.66*p));ctx.lineTo(cx,cy);ctx.fillStyle=g;ctx.fill();
-    ctx.beginPath();ctx.arc(cx,cy,inner,0,Math.PI*2);ctx.fillStyle='white';ctx.fill();
-    ctx.font='700 26px Cormorant Garamond,serif';ctx.fillStyle='#1e40af';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(Math.round(66*p),cx,cy-5);
-    ctx.font='500 9px DM Mono,monospace';ctx.fillStyle='#64748b';ctx.fillText('PSI',cx,cy+13);
-  }
-  let p=0;
-  const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){const tick=()=>{draw(p);if(p<1){p+=.025;requestAnimationFrame(tick);}};tick();obs.disconnect();}},{threshold:.3});obs.observe(c);
-})();
-</script>
-</body>
-</html>
+SYSTEM · SPONSOR LEVEL
+WA Government Conditions
+Boundaries at 23.0 across 25 leaders is a system signal requiring a system response. Matt's coaching programme cannot — and should not have to — compensate for workload, role design, and always-on culture conditions. This requires sponsor engagement.
+→
+Present Boundaries finding (anonymised, aggregated) to programme sponsors
+→
+Request workload and role design review as a companion initiative
+→
+Frame as a workforce sustainability risk, not a performance deficit
+15 · REFLECTIVE QUESTIONS
+Questions for Matt & This Cohort
+1
+Boundaries scored 23.0 across all 25 leaders. What does that tell us about the WA Government working conditions that this cohort navigates daily — and what would need to change structurally for boundary-setting to feel safe, normal, and expected?
+2
+Structured Reflection sits at 46.2, while Action Experimentation scores 77.0. This cohort acts well but may not be pausing to learn deeply. What would a regular, protected reflection practice look like in a government leadership context — and what would make it sustainable?
+3
+Learner Safety is 60 in a coaching context. What would it take for each person in this cohort to feel genuinely safe to be wrong, to not know, and to ask for help — within this programme and within their organisation?
+4
+This cohort has exceptional Conscience strength — 80.2, with Ethical Sensitivity and Pro-Social Contribution both at 86.0. How do we use that ethical foundation as a platform to build the psychological safety and recovery infrastructure that's currently missing?
+Matt Brown's Coaching Cohort · WA Government Leadership · Q1 2026
+N = 49 · Fully Anonymised · Coaching Use Only
+Confidential · RAG Intelligence · 2026
